@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>1.0.0-alpha001</Version>
+    <Authors>Anders Bjerner</Authors>
+    <Company>Skybrud.dk</Company>
+    <Description>Skybrud.Essentials addon for working with ASP.NET Core.</Description>
+    <Copyright>Copyright © 2021</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="5.0.0" />
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.29" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PackageId>Skybrud.Essentials.AspNetCore</PackageId>
+    <PackageTags>Skybrud, Essentials, AspNet, AspNetCore</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://packages.skybrud.dk/skybrud.essentials.aspnetcore/</PackageProjectUrl>
+    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/skybrud/Skybrud.Essentials.AspNetCore</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Essentials.AspNetCore.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>
