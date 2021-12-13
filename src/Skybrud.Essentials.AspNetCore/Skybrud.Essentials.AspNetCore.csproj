@@ -7,7 +7,7 @@
   <PropertyGroup>
     <Version>1.0.0-alpha001</Version>
     <Authors>Anders Bjerner</Authors>
-    <Company>Skybrud.dk</Company>
+    <Company>Limbo</Company>
     <Description>Skybrud.Essentials addon for working with ASP.NET Core.</Description>
     <Copyright>Copyright © 2021</Copyright>
   </PropertyGroup>
@@ -20,10 +20,10 @@
 
   <PropertyGroup>
     <PackageId>Skybrud.Essentials.AspNetCore</PackageId>
-    <PackageTags>Skybrud, Essentials, AspNet, AspNetCore</PackageTags>
+    <PackageTags>Skybrud, Limbo, Essentials, AspNet, AspNetCore</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://packages.skybrud.dk/skybrud.essentials.aspnetcore/</PackageProjectUrl>
-    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
+    <PackageIcon>Limbo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/skybrud/Skybrud.Essentials.AspNetCore</RepositoryUrl>
   </PropertyGroup>
@@ -31,5 +31,9 @@
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Essentials.AspNetCore.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../build/Limbo.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
