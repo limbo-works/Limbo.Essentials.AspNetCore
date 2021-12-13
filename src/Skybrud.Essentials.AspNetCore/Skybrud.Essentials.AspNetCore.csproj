@@ -8,6 +8,7 @@
     <Version>1.0.0-alpha001</Version>
     <Authors>Anders Bjerner</Authors>
     <Company>Limbo</Company>
+    <Product>Skybrud.Essentials</Product>
     <Description>Skybrud.Essentials addon for working with ASP.NET Core.</Description>
     <Copyright>Copyright © 2021</Copyright>
   </PropertyGroup>
