@@ -16,7 +16,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="5.0.0" />
-    <PackageReference Include="Skybrud.Essentials" Version="1.1.29" />
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.33" />
   </ItemGroup>
 
   <PropertyGroup>
