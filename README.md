@@ -67,7 +67,7 @@ Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0-alpha001
         {"id", new StringValues("1")},
         {"ids", new StringValues(new []{"1", "2", "3"})},
         {"piAsFloat", "3.14"},
-        {"double", "3.1415926535"},
+        {"piAsDouble", "3.1415926535"},
         {"flag1", ""},
         {"flag2", "true"}
     });
