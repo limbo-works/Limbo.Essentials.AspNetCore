@@ -30,6 +30,72 @@ namespace Skybrud.Essentials.AspNetCore {
             string input = values.FirstOrDefault();
             return input?.ToInt32(fallback) ?? fallback;
         }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="long" /> value.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static long ToInt64(this StringValues values) {
+            string input = values.FirstOrDefault();
+            return input?.ToInt64() ?? 0;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="long" /> value. If the conversion fails,
+        /// <paramref name="fallback" /> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static long ToInt64(this StringValues values, long fallback) {
+            string input = values.FirstOrDefault();
+            return input?.ToInt64(fallback) ?? fallback;
+        }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="float" /> value.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static float ToFloat(this StringValues values) {
+            string input = values.FirstOrDefault();
+            return input?.ToFloat() ?? 0;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="float" /> value. If the conversion fails,
+        /// <paramref name="fallback" /> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static float ToFloat(this StringValues values, float fallback) {
+            string input = values.FirstOrDefault();
+            return input?.ToFloat(fallback) ?? fallback;
+        }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="double" /> value.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static double ToDouble(this StringValues values) {
+            string input = values.FirstOrDefault();
+            return input?.ToDouble() ?? 0;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="double" /> value. If the conversion fails,
+        /// <paramref name="fallback" /> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static double ToDouble(this StringValues values, double fallback) {
+            string input = values.FirstOrDefault();
+            return input?.ToDouble(fallback) ?? fallback;
+        }
 
         /// <summary>
         /// Converts the specified <paramref name="values" /> to a <see cref="bool" /> value. If the conversion fails,
@@ -51,7 +117,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <returns>The result of the conversion.</returns>
         public static bool ToBoolean(this StringValues values, bool fallback) {
             string str = values.FirstOrDefault();
-            return str?.ParseBoolean(fallback) ?? fallback;
+            return str?.ToBoolean(fallback) ?? fallback;
         }
 
     }
