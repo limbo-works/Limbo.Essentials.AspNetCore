@@ -10,7 +10,7 @@ namespace Skybrud.Essentials.AspNetCore {
     public static class QueryStringExtensions {
         
         /// <summary>
-        /// Converts the specified <paramref name="values" /> to an <see cref="bool" /> value.
+        /// Converts the specified <paramref name="values" /> to an <see cref="int" /> value.
         /// </summary>
         /// <param name="values">The values to be converted.</param>
         /// <returns>The result of the conversion.</returns>
@@ -20,7 +20,7 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="values" /> to an <see cref="bool" /> value. If the conversion fails,
+        /// Converts the specified <paramref name="values" /> to an <see cref="int" /> value. If the conversion fails,
         /// <paramref name="fallback" /> is returned instead.
         /// </summary>
         /// <param name="values">The values to be converted.</param>
