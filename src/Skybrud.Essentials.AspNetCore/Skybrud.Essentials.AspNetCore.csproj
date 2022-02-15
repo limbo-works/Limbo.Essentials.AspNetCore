@@ -1,24 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup>
     <Version>1.0.0-alpha001</Version>
-    <Authors>Anders Bjerner</Authors>
     <Company>Limbo</Company>
     <Product>Skybrud.Essentials</Product>
+    <Authors>Anders Bjerner</Authors>
+    <Copyright>Copyright © 2022</Copyright>
     <Description>Skybrud.Essentials addon for working with ASP.NET Core.</Description>
-    <Copyright>Copyright © 2021</Copyright>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="5.0.0" />
-    <PackageReference Include="Skybrud.Essentials" Version="1.1.33" />
-  </ItemGroup>
-
+  <!-- Information for the NuGet package -->
   <PropertyGroup>
     <PackageId>Skybrud.Essentials.AspNetCore</PackageId>
     <PackageTags>Skybrud, Limbo, Essentials, AspNet, AspNetCore</PackageTags>
@@ -29,12 +25,21 @@
     <RepositoryUrl>https://github.com/skybrud/Skybrud.Essentials.AspNetCore</RepositoryUrl>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Essentials.AspNetCore.xml</DocumentationFile>
-  </PropertyGroup>
-
+  <!-- Include NuGet dependencies -->
   <ItemGroup>
-    <None Include="../build/Limbo.png" Pack="true" PackagePath="\" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="5.0.0" />
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.36" />
   </ItemGroup>
+
+  <!-- Include package icon for NuGet -->
+  <ItemGroup>
+    <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <!-- Generate XML documentation -->
+  <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
 
 </Project>
