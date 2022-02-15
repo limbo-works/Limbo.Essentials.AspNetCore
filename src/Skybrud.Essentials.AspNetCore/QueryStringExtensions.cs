@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Primitives;
+using System.Net;
+using System.Text;
 
 namespace Skybrud.Essentials.AspNetCore {
 
@@ -209,6 +212,32 @@ namespace Skybrud.Essentials.AspNetCore {
         /// conversion is successful; otherwise <paramref name="fallback"/>.</returns>
         public static bool GetBoolean(this IQueryCollection query, string key, bool fallback) {
             return query == null ? fallback : query[key].ToBoolean(fallback);
+        }
+
+        /// <summary>
+        /// Returns an URL encoded string representing the specified <paramref name="query"/>.
+        /// </summary>
+        /// <param name="query">The query string to be encoded.</param>
+        /// <returns>The URL encoded version of the query string.</returns>
+        public static string ToUrlEncodedString(IQueryCollection query) {
+
+            StringBuilder sb = new();
+
+            int i = 0;
+
+            foreach ((string key, StringValues stringValues) in query) {
+
+                foreach (string value in stringValues) {
+                    if (i++ > 0) sb.Append('&');
+                    sb.Append(WebUtility.UrlEncode(key));
+                    sb.Append('=');
+                    sb.Append(WebUtility.UrlEncode(value));
+                }
+
+            }
+
+            return sb.ToString();
+
         }
 
     }
