@@ -219,7 +219,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// </summary>
         /// <param name="query">The query string to be encoded.</param>
         /// <returns>The URL encoded version of the query string.</returns>
-        public static string ToUrlEncodedString(IQueryCollection query) {
+        public static string ToUrlEncodedString(this IQueryCollection query) {
 
             StringBuilder sb = new();
 
