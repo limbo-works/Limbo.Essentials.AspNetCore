@@ -4,12 +4,12 @@ using System.Linq;
 using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.AspNetCore {
-    
+
     /// <summary>
     /// Various extension methods for working with the <see cref="StringValues"/> class.
     /// </summary>
     public static class StringValuesExtensions {
-        
+
         /// <summary>
         /// Converts the specified <paramref name="values" /> to an <see cref="int" /> value.
         /// </summary>
@@ -40,7 +40,7 @@ namespace Skybrud.Essentials.AspNetCore {
         public static int[] ToInt32Array(this StringValues values) {
             return values.SelectMany(StringUtils.ParseInt32Array).ToArray();
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="values" /> to a <see cref="long" /> value.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Skybrud.Essentials.AspNetCore {
             string input = values.FirstOrDefault();
             return input?.ToInt64(fallback) ?? fallback;
         }
-        
+
         /// <summary>
         /// Parses the specified array of string <paramref name="values"/> into a <see cref="long"/> array.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Skybrud.Essentials.AspNetCore {
         public static long[] ToInt64Array(this StringValues values) {
             return values.SelectMany(StringUtils.ParseInt64Array).ToArray();
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="values" /> to a <see cref="float" /> value.
         /// </summary>
@@ -93,7 +93,7 @@ namespace Skybrud.Essentials.AspNetCore {
             string input = values.FirstOrDefault();
             return input?.ToFloat(fallback) ?? fallback;
         }
-        
+
         /// <summary>
         /// Parses the specified array of string <paramref name="values"/> into a <see cref="float"/> array.
         /// </summary>
@@ -102,7 +102,7 @@ namespace Skybrud.Essentials.AspNetCore {
         public static float[] ToFloatArray(this StringValues values) {
             return values.SelectMany(StringUtils.ParseFloatArray).ToArray();
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="values" /> to a <see cref="double" /> value.
         /// </summary>
@@ -124,7 +124,7 @@ namespace Skybrud.Essentials.AspNetCore {
             string input = values.FirstOrDefault();
             return input?.ToDouble(fallback) ?? fallback;
         }
-        
+
         /// <summary>
         /// Parses the specified array of string <paramref name="values"/> into a <see cref="double"/> array.
         /// </summary>

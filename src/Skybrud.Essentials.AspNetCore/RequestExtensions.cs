@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 
 namespace Skybrud.Essentials.AspNetCore {
-    
+
     /// <summary>
     /// Various extension methods for working with <see cref="HttpRequest"/>.
     /// </summary>
@@ -22,7 +22,7 @@ namespace Skybrud.Essentials.AspNetCore {
                 Query = request.QueryString.ToUriComponent()
             }.Uri;
         }
-        
+
         /// <summary>
         /// Returns the value of the <c>Accept</c> HTTP header
         /// </summary>
@@ -31,7 +31,7 @@ namespace Skybrud.Essentials.AspNetCore {
         public static string GetAcceptTypes(this HttpRequest request) {
             return request?.HttpContext.Request?.Headers["Accept"];
         }
-        
+
         /// <summary>
         /// Returns the value of the <c>Accept-Encoding</c> HTTP header
         /// </summary>
@@ -40,7 +40,7 @@ namespace Skybrud.Essentials.AspNetCore {
         public static string GetAcceptEncoding(this HttpRequest request) {
             return request?.HttpContext.Request?.Headers["Accept-Encoding"];
         }
-        
+
         /// <summary>
         /// Returns the value of the <c>Accept-Language</c> HTTP header
         /// </summary>
@@ -58,7 +58,7 @@ namespace Skybrud.Essentials.AspNetCore {
         public static string GetRemoteAddress(this HttpRequest request) {
             return request?.HttpContext.Connection.RemoteIpAddress.ToString();
         }
-        
+
         /// <summary>
         /// Returns the value of the <c>Referer</c> HTTP header
         /// </summary>
