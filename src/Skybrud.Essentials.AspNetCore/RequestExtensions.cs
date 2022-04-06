@@ -17,7 +17,7 @@ namespace Skybrud.Essentials.AspNetCore {
             return new UriBuilder {
                 Scheme = request.Scheme,
                 Host = request.Host.Host,
-                Port = request.Host.Port ?? (request.Scheme == "https" ? 80 : 443),
+                Port = request.Host.Port ?? (request.Scheme == "https" ? 443 : 80),
                 Path = request.Path,
                 Query = request.QueryString.ToUriComponent()
             }.Uri;
