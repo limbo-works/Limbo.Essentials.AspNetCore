@@ -9,13 +9,13 @@ Skybrud.Essentials addon for working with ASP.NET Core.
 Install via the new .NET CLI:
 
 ```
-dotnet add package Skybrud.Essentials.AspNetCore --version 1.0.0-alpha001
+dotnet add package Skybrud.Essentials.AspNetCore --version 1.0.0-alpha005
 ```
 
 or the older Nuget package manager:
 
 ```
-Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0-alpha001
+Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0-alpha005
 ```
 
 ## Examples
