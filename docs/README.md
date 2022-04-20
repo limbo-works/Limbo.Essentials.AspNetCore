@@ -1,3 +1,3 @@
 # Documentation
 
-- [JSON.net](./docs/json.net)
+- [JSON.net](./json.net)
