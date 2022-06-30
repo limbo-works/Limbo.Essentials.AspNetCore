@@ -29,7 +29,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
         public static string GetAcceptTypes(this HttpRequest request) {
-            return request?.HttpContext.Request?.Headers["Accept"];
+            return request?.Headers["Accept"];
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
         public static string GetAcceptEncoding(this HttpRequest request) {
-            return request?.HttpContext.Request?.Headers["Accept-Encoding"];
+            return request?.Headers["Accept-Encoding"];
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
         public static string GetAcceptLanguage(this HttpRequest request) {
-            return request?.HttpContext.Request?.Headers["Accept-Language"];
+            return request?.Headers["Accept-Language"];
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
         public static string GetReferrer(this HttpRequest request) {
-            return request?.HttpContext.Request?.Headers["Referer"];
+            return request?.Headers["Referer"];
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="request">The request.</param>
         /// <returns>The user agent.</returns>
         public static string GetUserAgent(this HttpRequest request) {
-            return request?.HttpContext.Request?.Headers["User-Agent"];
+            return request?.Headers["User-Agent"];
         }
 
     }
