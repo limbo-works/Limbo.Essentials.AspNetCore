@@ -98,3 +98,64 @@ Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0-alpha005
 
 }
 ```
+
+<br /><br />
+
+### Forcing API controllers to use Newtonsoft.Json
+
+By default, ASP.NET Core uses the logic within the `System.Text.Json` namespace to serialize models to JSON. If you wish to use the `Newtonsoft.Json` package instead, there are a few different approaches for doing so:
+
+#### Use the `Microsoft.AspNetCore.Mvc.NewtonsoftJson` package
+
+This package let's you set up all your API controllers to use `Newtonsoft.Json` for serializing JSON. This is a global setting, so be aware that this may affect parts of your application that it shouldn't.
+
+You don't need `Skybrud.Essentials.AspNetCore` when using this approach.
+
+
+#### Use the `NewtonsoftJsonResult` class
+
+As an alternative to enabling the use of `Newtonsoft.Json` globally, you can use the `NewtonsoftJsonResult` class from this package. This let's you determine the output an method level - eg. have a controller where some methods use the default `System.Text.Json`, but where others use `Newtonsoft.Json`.
+
+This `NewtonsoftJsonResult` extends ASP.NET Core's `ContentResult` class, and serves as a wrapper for your response body. You may use the `NewtonsoftJsonResult` constructor directly, which then let's you specify a HTTP status code and a value representing your response body. But the class also features a number of static methods for creating a new response with a specific status code:
+ 
+```csharp
+public ActionResult Hello() {
+    return NewtonsoftJsonResult.Ok(new { yay = true } );
+}
+```
+
+```csharp
+public ActionResult OhNoes() {
+  return NewtonsoftJsonResult.InternalError("The server made a boo boo.");
+}
+```
+
+The `NewtonsoftJsonResult.Ok` and `NewtonsoftJsonResult.Created` methods are used for creating successful responses, so they both take a single parameter representing the response body.
+
+On the other hand, the `NewtonsoftJsonResult.BadRequest`, `NewtonsoftJsonResult.Unauthorized`, `NewtonsoftJsonResult.Forbidden`, `NewtonsoftJsonResult.NotFound` and `NewtonsoftJsonResult.InternalError` represent responsens wrapping an error, so they take a single string parameter with an error message.
+
+For instance, the `NewtonsoftJsonResult.InternalError("The server made a boo boo.")` from before will result in a response with a 500 status code and the following JSON body:
+
+```json
+{
+"meta": {
+  "code": 500,
+  "error": "The server made a boo boo."
+}
+}
+```
+
+#### Use `NewtonsoftJsonOnlyConfigurationAttribute` on the controller
+
+If you wish to set this up at the controller level, you can add the `NewtonsoftJsonOnlyConfigurationAttribute` to your API controller:
+
+```csharp
+[NewtonsoftJsonOnlyConfiguration]
+public class MyController : Controller {
+
+    public ActionResult Hello() {
+        return new { yay = true };
+    }
+
+}
+```
