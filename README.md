@@ -2,6 +2,8 @@
 
 Skybrud.Essentials addon for working with ASP.NET Core.
 
+<br /><br />
+
 ## Installation
 
 ### NuGet
@@ -17,6 +19,8 @@ or the older Nuget package manager:
 ```
 Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0-alpha005
 ```
+
+<br /><br />
 
 ## Examples
 
@@ -53,6 +57,8 @@ Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0-alpha005
 
 }
 ```
+
+<br /><br />
 
 ### Extension methods for `IQueryCollection`
 
