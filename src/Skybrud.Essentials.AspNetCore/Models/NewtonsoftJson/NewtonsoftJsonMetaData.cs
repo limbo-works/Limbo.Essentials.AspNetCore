@@ -1,14 +1,12 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using Newtonsoft.Json;
 
-namespace Skybrud.Essentials.AspNetCore.Models.Json {
+namespace Skybrud.Essentials.AspNetCore.Models.NewtonsoftJson {
 
     /// <summary>
     /// Class representing the meta data of a JSON response.
     /// </summary>
-    [Obsolete("Use the 'NewtonsoftJsonMetaData' class instead.")]
-    public class JsonMetaData {
+    public class NewtonsoftJsonMetaData {
 
         /// <summary>
         /// Gets or sets the status code.

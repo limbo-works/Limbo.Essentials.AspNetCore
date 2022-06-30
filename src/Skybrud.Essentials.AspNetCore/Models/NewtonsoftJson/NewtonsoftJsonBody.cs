@@ -1,20 +1,18 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using Newtonsoft.Json;
 
-namespace Skybrud.Essentials.AspNetCore.Models.Json {
+namespace Skybrud.Essentials.AspNetCore.Models.NewtonsoftJson {
 
     /// <summary>
     /// Class representing the body of a JSON response.
     /// </summary>
-    [Obsolete("Use the 'NewtonsoftJsonBody' class instead.")]
-    public class JsonBody {
+    public class NewtonsoftJsonBody {
 
         /// <summary>
         /// Gets or sets the meta data for the response.
         /// </summary>
         [JsonProperty(PropertyName = "meta")]
-        public JsonMetaData Meta { get; set; } = new();
+        public NewtonsoftJsonMetaData Meta { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the data object.
@@ -27,14 +25,14 @@ namespace Skybrud.Essentials.AspNetCore.Models.Json {
         /// <summary>
         /// Initializes a new instance with default options.
         /// </summary>
-        public JsonBody() { }
+        public NewtonsoftJsonBody() { }
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="status"/> and <paramref name="error"/> message.
         /// </summary>
         /// <param name="status">The HTTP status.</param>
         /// <param name="error">The error message.</param>
-        public JsonBody(HttpStatusCode status, string error) {
+        public NewtonsoftJsonBody(HttpStatusCode status, string error) {
             Meta.Code = status;
             Meta.Error = error;
         }
@@ -45,7 +43,7 @@ namespace Skybrud.Essentials.AspNetCore.Models.Json {
         /// <param name="status">The HTTP status.</param>
         /// <param name="error">The error message.</param>
         /// <param name="data">The data.</param>
-        public JsonBody(HttpStatusCode status, string error, object data) {
+        public NewtonsoftJsonBody(HttpStatusCode status, string error, object data) {
             Meta.Code = status;
             Meta.Error = error;
             Data = data;
