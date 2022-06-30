@@ -2,6 +2,17 @@
 
 Skybrud.Essentials addon for working with ASP.NET Core.
 
+<table>
+  <tr>
+    <td><strong>License:</strong></td>
+    <td><a href="./LICENSE.md"><strong>MIT License</strong></a></td>
+  </tr>
+  <tr>
+    <td><strong>Target Framework:</strong></td>
+    <td>.NET 5</td>
+  </tr>
+</table>
+
 <br /><br />
 
 ## Installation
