@@ -56,7 +56,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="request">The request.</param>
         /// <returns>The remote address.</returns>
         public static string GetRemoteAddress(this HttpRequest request) {
-            return request?.HttpContext.Connection.RemoteIpAddress.ToString();
+            return request?.HttpContext.Connection.RemoteIpAddress?.ToString();
         }
 
         /// <summary>
