@@ -138,10 +138,10 @@ For instance, the `NewtonsoftJsonResult.InternalError("The server made a boo boo
 
 ```json
 {
-"meta": {
-  "code": 500,
-  "error": "The server made a boo boo."
-}
+  "meta": {
+    "code": 500,
+    "error": "The server made a boo boo."
+  }
 }
 ```
 
