@@ -1,4 +1,4 @@
-**Skybrud.Essentials.AspNetCore** is an add-on that builds on top of our [Skybrud.Essentials]() package, and it provides various logic that makes it easier to work with different parts of ASP.NET Core - eg. parsing query strings and reading request headers.
+**Skybrud.Essentials.AspNetCore** is an add-on that builds on top of our [Skybrud.Essentials](https://github.com/skybrud/Skybrud.Essentials) package, and it provides various logic that makes it easier to work with different parts of ASP.NET Core - eg. parsing query strings and reading request headers.
 
 ### Changelog
 
