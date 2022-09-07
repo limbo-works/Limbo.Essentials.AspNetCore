@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using System.Net;
 using System.Text;
+using Skybrud.Essentials.Strings.Extensions;
 
 namespace Skybrud.Essentials.AspNetCore {
 
@@ -21,6 +22,18 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <returns>The value of the first query string component matching <paramref name="key"/>; otherwise <c>null</c>.</returns>
         public static string GetString(this IQueryCollection query, string key) {
             return query?[key].FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Returns the value of the first query string component with the specified <paramref name="key"/>, or
+        /// <paramref name="fallback"/> if not found.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns>The value of the first query string component matching <paramref name="key"/>; otherwise <paramref name="fallback"/>.</returns>
+        public static string GetString(this IQueryCollection query, string key, string fallback) {
+            return query.GetString(key).HasValue(out string value) ? value : fallback;
         }
 
         /// <summary>
