@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 
 namespace Skybrud.Essentials.AspNetCore {
@@ -75,6 +76,15 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <returns>The user agent.</returns>
         public static string GetUserAgent(this HttpRequest request) {
             return request?.Headers["User-Agent"];
+        }
+
+        /// <summary>
+        /// Returns the value of the <c>X-Forwarded-For</c> header, or <c>null</c> if the header is not present.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>The value of the header, or <c>null</c> if not present.</returns>
+        public static string GetForwardedFor(this HttpRequest request) {
+            return request?.Headers["X-Forwarded-For"].FirstOrDefault();
         }
 
     }
