@@ -1,4 +1,4 @@
-# Skybrud.Essentials.AspNetCore
+# Skybrud.Essentials.AspNetCore [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Skybrud.Essentials.AspNetCore.svg)](https://www.nuget.org/packages/Skybrud.Essentials.AspNetCore) [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Essentials.AspNetCore.svg)](https://www.nuget.org/packages/Skybrud.Essentials.AspNetCore)
 
 Skybrud.Essentials addon for working with ASP.NET Core.
 
@@ -8,8 +8,8 @@ Skybrud.Essentials addon for working with ASP.NET Core.
     <td><a href="./LICENSE.md"><strong>MIT License</strong></a></td>
   </tr>
   <tr>
-    <td><strong>Target Framework:</strong></td>
-    <td>.NET 5</td>
+    <td><strong>Target Frameworks:</strong></td>
+    <td>.NET 5 and .NET 6</td>
   </tr>
 </table>
 
@@ -19,16 +19,16 @@ Skybrud.Essentials addon for working with ASP.NET Core.
 
 ### NuGet
 
-Install via the new .NET CLI:
+To install the package via [NuGet](https://www.nuget.org/packages/Skybrud.Essentials.AspNetCore), you can use either .NET CLI:
 
 ```
-dotnet add package Skybrud.Essentials.AspNetCore --version 1.0.0-alpha005
+dotnet add package Skybrud.Essentials.AspNetCore --version 1.0.0-alpha007
 ```
 
 or the older Nuget package manager:
 
 ```
-Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0-alpha005
+Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0-alpha007
 ```
 
 <br /><br />
