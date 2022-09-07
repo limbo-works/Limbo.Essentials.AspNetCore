@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Newtonsoft.Json;
 
-namespace Skybrud.Essentials.AspNetCore.Models.NewtonsoftJson {
+namespace Skybrud.Essentials.AspNetCore.Json.Newtonsoft {
 
     /// <summary>
     /// Class representing the meta data of a JSON response.

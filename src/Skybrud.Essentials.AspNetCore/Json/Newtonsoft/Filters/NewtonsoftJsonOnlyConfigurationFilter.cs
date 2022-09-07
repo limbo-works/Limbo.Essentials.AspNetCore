@@ -9,7 +9,7 @@ using Newtonsoft.Json.Serialization;
 
 #pragma warning disable CS1591
 
-namespace Skybrud.Essentials.AspNetCore.Filters.NewtonsoftJson {
+namespace Skybrud.Essentials.AspNetCore.Json.Newtonsoft.Filters {
 
     public class NewtonsoftJsonOnlyConfigurationFilter : IResultFilter {
 

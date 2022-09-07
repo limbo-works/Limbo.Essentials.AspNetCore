@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace Skybrud.Essentials.AspNetCore.Models.NewtonsoftJson {
+namespace Skybrud.Essentials.AspNetCore.Json.Newtonsoft {
 
     /// <summary>
     /// Class representing a JOSN based result serialized using <strong>Newtonsoft.Json</strong>.
