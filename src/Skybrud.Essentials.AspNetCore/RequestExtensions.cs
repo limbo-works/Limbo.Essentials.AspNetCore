@@ -25,30 +25,30 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
-        /// Returns the value of the <c>Accept</c> HTTP header
+        /// Returns the value of the <c>Accept</c> HTTP header, or <c>null</c> if the header is not present.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
-        public static string GetAcceptTypes(this HttpRequest request) {
-            return request?.Headers["Accept"];
+        public static string? GetAcceptTypes(this HttpRequest? request) {
+            return request?.Headers["Accept"].FirstOrDefault();
         }
 
         /// <summary>
-        /// Returns the value of the <c>Accept-Encoding</c> HTTP header
+        /// Returns the value of the <c>Accept-Encoding</c> HTTP header, or <c>null</c> if the header is not present.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
-        public static string GetAcceptEncoding(this HttpRequest request) {
-            return request?.Headers["Accept-Encoding"];
+        public static string? GetAcceptEncoding(this HttpRequest? request) {
+            return request?.Headers["Accept-Encoding"].FirstOrDefault();
         }
 
         /// <summary>
-        /// Returns the value of the <c>Accept-Language</c> HTTP header
+        /// Returns the value of the <c>Accept-Language</c> HTTP header, or <c>null</c> if the header is not present.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
-        public static string GetAcceptLanguage(this HttpRequest request) {
-            return request?.Headers["Accept-Language"];
+        public static string? GetAcceptLanguage(this HttpRequest? request) {
+            return request?.Headers["Accept-Language"].FirstOrDefault();
         }
 
         /// <summary>
@@ -56,17 +56,17 @@ namespace Skybrud.Essentials.AspNetCore {
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The remote address.</returns>
-        public static string GetRemoteAddress(this HttpRequest request) {
+        public static string? GetRemoteAddress(this HttpRequest? request) {
             return request?.HttpContext.Connection.RemoteIpAddress?.ToString();
         }
 
         /// <summary>
-        /// Returns the value of the <c>Referer</c> HTTP header
+        /// Returns the value of the <c>Referer</c> HTTP header, or <c>null</c> if the header is not present.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
-        public static string GetReferrer(this HttpRequest request) {
-            return request?.Headers["Referer"];
+        public static string? GetReferrer(this HttpRequest? request) {
+            return request?.Headers["Referer"].FirstOrDefault();
         }
 
         /// <summary>
@@ -74,8 +74,8 @@ namespace Skybrud.Essentials.AspNetCore {
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The user agent.</returns>
-        public static string GetUserAgent(this HttpRequest request) {
-            return request?.Headers["User-Agent"];
+        public static string? GetUserAgent(this HttpRequest? request) {
+            return request?.Headers["User-Agent"].FirstOrDefault();
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The value of the header, or <c>null</c> if not present.</returns>
-        public static string GetForwardedFor(this HttpRequest request) {
+        public static string? GetForwardedFor(this HttpRequest? request) {
             return request?.Headers["X-Forwarded-For"].FirstOrDefault();
         }
 

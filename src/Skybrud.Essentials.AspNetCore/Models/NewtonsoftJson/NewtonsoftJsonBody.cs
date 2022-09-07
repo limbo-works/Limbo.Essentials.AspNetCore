@@ -18,7 +18,7 @@ namespace Skybrud.Essentials.AspNetCore.Models.NewtonsoftJson {
         /// Gets or sets the data object.
         /// </summary>
         [JsonProperty(PropertyName = "data", NullValueHandling = NullValueHandling.Ignore)]
-        public object Data { get; set; }
+        public object? Data { get; set; }
 
         #region Constructors
 
@@ -32,7 +32,7 @@ namespace Skybrud.Essentials.AspNetCore.Models.NewtonsoftJson {
         /// </summary>
         /// <param name="status">The HTTP status.</param>
         /// <param name="error">The error message.</param>
-        public NewtonsoftJsonBody(HttpStatusCode status, string error) {
+        public NewtonsoftJsonBody(HttpStatusCode status, string? error) {
             Meta.Code = status;
             Meta.Error = error;
         }
@@ -43,7 +43,7 @@ namespace Skybrud.Essentials.AspNetCore.Models.NewtonsoftJson {
         /// <param name="status">The HTTP status.</param>
         /// <param name="error">The error message.</param>
         /// <param name="data">The data.</param>
-        public NewtonsoftJsonBody(HttpStatusCode status, string error, object data) {
+        public NewtonsoftJsonBody(HttpStatusCode status, string? error, object? data) {
             Meta.Code = status;
             Meta.Error = error;
             Data = data;

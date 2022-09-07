@@ -16,7 +16,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="values">The values to be converted.</param>
         /// <returns>The result of the conversion.</returns>
         public static int ToInt32(this StringValues values) {
-            string input = values.FirstOrDefault();
+            string? input = values.FirstOrDefault();
             return input?.ToInt32() ?? 0;
         }
 
@@ -28,7 +28,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The result of the conversion.</returns>
         public static int ToInt32(this StringValues values, int fallback) {
-            string input = values.FirstOrDefault();
+            string? input = values.FirstOrDefault();
             return input?.ToInt32(fallback) ?? fallback;
         }
 
@@ -47,7 +47,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="values">The values to be converted.</param>
         /// <returns>The result of the conversion.</returns>
         public static long ToInt64(this StringValues values) {
-            string input = values.FirstOrDefault();
+            string? input = values.FirstOrDefault();
             return input?.ToInt64() ?? 0;
         }
 
@@ -59,7 +59,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The result of the conversion.</returns>
         public static long ToInt64(this StringValues values, long fallback) {
-            string input = values.FirstOrDefault();
+            string? input = values.FirstOrDefault();
             return input?.ToInt64(fallback) ?? fallback;
         }
 
@@ -78,7 +78,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="values">The values to be converted.</param>
         /// <returns>The result of the conversion.</returns>
         public static float ToFloat(this StringValues values) {
-            string input = values.FirstOrDefault();
+            string? input = values.FirstOrDefault();
             return input?.ToFloat() ?? 0;
         }
 
@@ -90,7 +90,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The result of the conversion.</returns>
         public static float ToFloat(this StringValues values, float fallback) {
-            string input = values.FirstOrDefault();
+            string? input = values.FirstOrDefault();
             return input?.ToFloat(fallback) ?? fallback;
         }
 
@@ -109,7 +109,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="values">The values to be converted.</param>
         /// <returns>The result of the conversion.</returns>
         public static double ToDouble(this StringValues values) {
-            string input = values.FirstOrDefault();
+            string? input = values.FirstOrDefault();
             return input?.ToDouble() ?? 0;
         }
 
@@ -121,7 +121,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The result of the conversion.</returns>
         public static double ToDouble(this StringValues values, double fallback) {
-            string input = values.FirstOrDefault();
+            string? input = values.FirstOrDefault();
             return input?.ToDouble(fallback) ?? fallback;
         }
 
@@ -141,7 +141,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="values">The values to be converted.</param>
         /// <returns>The result of the conversion.</returns>
         public static bool ToBoolean(this StringValues values) {
-            string str = values.FirstOrDefault();
+            string? str = values.FirstOrDefault();
             return str != null && str.ToBoolean();
         }
 
@@ -153,7 +153,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The result of the conversion.</returns>
         public static bool ToBoolean(this StringValues values, bool fallback) {
-            string str = values.FirstOrDefault();
+            string? str = values.FirstOrDefault();
             return str?.ToBoolean(fallback) ?? fallback;
         }
 

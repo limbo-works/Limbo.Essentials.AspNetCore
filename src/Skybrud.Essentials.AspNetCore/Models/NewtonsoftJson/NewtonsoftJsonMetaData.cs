@@ -18,7 +18,7 @@ namespace Skybrud.Essentials.AspNetCore.Models.NewtonsoftJson {
         /// Gets or sets the error message. If the error message is <c>NULL</c>, the property will not be a part of the JSON response.
         /// </summary>
         [JsonProperty(PropertyName = "error", NullValueHandling = NullValueHandling.Ignore)]
-        public string Error { get; set; }
+        public string? Error { get; set; }
 
     }
 

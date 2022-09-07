@@ -20,7 +20,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="query">The query string.</param>
         /// <param name="key">The key of the query string component.</param>
         /// <returns>The value of the first query string component matching <paramref name="key"/>; otherwise <c>null</c>.</returns>
-        public static string GetString(this IQueryCollection query, string key) {
+        public static string? GetString(this IQueryCollection? query, string key) {
             return query?[key].FirstOrDefault();
         }
 
@@ -32,7 +32,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The value of the first query string component matching <paramref name="key"/>; otherwise <paramref name="fallback"/>.</returns>
-        public static string GetString(this IQueryCollection query, string key, string fallback) {
+        public static string GetString(this IQueryCollection? query, string key, string fallback) {
             return query.GetString(key).HasValue(out string value) ? value : fallback;
         }
 
@@ -45,7 +45,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <returns>The converted <see cref="int"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise <c>0</c>.</returns>
-        public static int GetInt32(this IQueryCollection query, string key) {
+        public static int GetInt32(this IQueryCollection? query, string key) {
             return query == null ? 0 : query[key].ToInt32();
         }
 
@@ -59,7 +59,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The converted <see cref="int"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise <paramref name="fallback"/>.</returns>
-        public static int GetInt32(this IQueryCollection query, string key, int fallback) {
+        public static int GetInt32(this IQueryCollection? query, string key, int fallback) {
             return query == null ? fallback : query[key].ToInt32(fallback);
         }
 
@@ -73,7 +73,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <remarks>The value of each query string component may themselves be a separated list of <see cref="int"/>
         /// values - eg. separated by commas. Values that can not be converted to a corresponding <see cref="int"/>
         /// value will be ignored.</remarks>
-        public static int[] GetInt32Array(this IQueryCollection query, string key) {
+        public static int[] GetInt32Array(this IQueryCollection? query, string key) {
             return query == null ? Array.Empty<int>() : query[key].ToInt32Array();
         }
 
@@ -86,7 +86,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <returns>The converted <see cref="long"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise <c>0</c>.</returns>
-        public static long GetInt64(this IQueryCollection query, string key) {
+        public static long GetInt64(this IQueryCollection? query, string key) {
             return query == null ? 0 : query[key].ToInt64();
         }
 
@@ -100,7 +100,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The converted <see cref="long"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise <paramref name="fallback"/>.</returns>
-        public static long GetInt64(this IQueryCollection query, string key, long fallback) {
+        public static long GetInt64(this IQueryCollection? query, string key, long fallback) {
             return query == null ? fallback : query[key].ToInt64(fallback);
         }
 
@@ -114,7 +114,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <remarks>The value of each query string component may themselves be a separated list of <see cref="long"/>
         /// values - eg. separated by commas. Values that can not be converted to a corresponding <see cref="long"/>
         /// value will be ignored.</remarks>
-        public static long[] GetInt64Array(this IQueryCollection query, string key) {
+        public static long[] GetInt64Array(this IQueryCollection? query, string key) {
             return query == null ? Array.Empty<long>() : query[key].ToInt64Array();
         }
 
@@ -127,7 +127,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <returns>The converted <see cref="float"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise <c>0</c>.</returns>
-        public static float GetFloat(this IQueryCollection query, string key) {
+        public static float GetFloat(this IQueryCollection? query, string key) {
             return query == null ? 0 : query[key].ToFloat();
         }
 
@@ -141,7 +141,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The converted <see cref="float"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise <paramref name="fallback"/>.</returns>
-        public static float GetFloat(this IQueryCollection query, string key, float fallback) {
+        public static float GetFloat(this IQueryCollection? query, string key, float fallback) {
             return query == null ? fallback : query[key].ToFloat(fallback);
         }
 
@@ -155,7 +155,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <remarks>The value of each query string component may themselves be a separated list of <see cref="float"/>
         /// values - eg. separated by commas. Values that can not be converted to a corresponding <see cref="float"/>
         /// value will be ignored.</remarks>
-        public static float[] GetFloatArray(this IQueryCollection query, string key) {
+        public static float[] GetFloatArray(this IQueryCollection? query, string key) {
             return query == null ? Array.Empty<float>() : query[key].ToFloatArray();
         }
 
@@ -168,7 +168,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <returns>The converted <see cref="double"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise <c>0</c>.</returns>
-        public static double GetDouble(this IQueryCollection query, string key) {
+        public static double GetDouble(this IQueryCollection? query, string key) {
             return query == null ? 0 : query[key].ToInt64();
         }
 
@@ -182,7 +182,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The converted <see cref="double"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise <paramref name="fallback"/>.</returns>
-        public static double GetDouble(this IQueryCollection query, string key, double fallback) {
+        public static double GetDouble(this IQueryCollection? query, string key, double fallback) {
             return query == null ? fallback : query[key].ToDouble(fallback);
         }
 
@@ -196,7 +196,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <remarks>The value of each query string component may themselves be a separated list of <see cref="double"/>
         /// values - eg. separated by commas. Values that can not be converted to a corresponding <see cref="double"/>
         /// value will be ignored.</remarks>
-        public static double[] GetDoubleArray(this IQueryCollection query, string key) {
+        public static double[] GetDoubleArray(this IQueryCollection? query, string key) {
             return query == null ? Array.Empty<double>() : query[key].ToDoubleArray();
         }
 
@@ -209,7 +209,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <returns>The converted <see cref="bool"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise <c>false</c>.</returns>
-        public static bool GetBoolean(this IQueryCollection query, string key) {
+        public static bool GetBoolean(this IQueryCollection? query, string key) {
             return query != null && query[key].ToBoolean();
         }
 
@@ -223,7 +223,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The converted <see cref="bool"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise <paramref name="fallback"/>.</returns>
-        public static bool GetBoolean(this IQueryCollection query, string key, bool fallback) {
+        public static bool GetBoolean(this IQueryCollection? query, string key, bool fallback) {
             return query == null ? fallback : query[key].ToBoolean(fallback);
         }
 
@@ -232,7 +232,9 @@ namespace Skybrud.Essentials.AspNetCore {
         /// </summary>
         /// <param name="query">The query string to be encoded.</param>
         /// <returns>The URL encoded version of the query string.</returns>
-        public static string ToUrlEncodedString(this IQueryCollection query) {
+        public static string ToUrlEncodedString(this IQueryCollection? query) {
+
+            if (query == null) return string.Empty;
 
             StringBuilder sb = new();
 
