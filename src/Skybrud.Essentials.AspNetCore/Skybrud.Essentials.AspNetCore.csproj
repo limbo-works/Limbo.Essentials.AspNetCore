@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>1.0.0-alpha007</Version>
+    <VersionPrefix>1.0.0-alpha007</VersionPrefix>
+    <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Product>Skybrud.Essentials</Product>
     <Authors>Anders Bjerner</Authors>
