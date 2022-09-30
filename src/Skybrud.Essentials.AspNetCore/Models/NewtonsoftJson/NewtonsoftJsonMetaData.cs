@@ -4,13 +4,13 @@ using Newtonsoft.Json;
 
 #pragma warning disable CS8618
 
-namespace Skybrud.Essentials.AspNetCore.Models.Json {
+namespace Skybrud.Essentials.AspNetCore.Models.NewtonsoftJson {
 
     /// <summary>
     /// Class representing the meta data of a JSON response.
     /// </summary>
-    [Obsolete("Use the 'NewtonsoftJsonMetaData' class instead.")]
-    public class JsonMetaData {
+    [Obsolete("Use the class in the 'Skybrud.Essentials.AspNetCore.Json.Newtonsoft' namespace instead.")]
+    public class NewtonsoftJsonMetaData {
 
         /// <summary>
         /// Gets or sets the status code.
