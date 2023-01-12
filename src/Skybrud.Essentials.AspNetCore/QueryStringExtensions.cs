@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using Skybrud.Essentials.Strings.Extensions;
 using System.Diagnostics.CodeAnalysis;
+using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.AspNetCore {
 
@@ -38,6 +39,25 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
+        /// Attempts to get the string value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the string value if successful; otherwise, <see langword="null"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetString(this IQueryCollection query, string key, [NotNullWhen(true)] out string? result) {
+
+            if (query.TryGetValue(key, out StringValues value)) {
+                result = value;
+                return result is not null;
+            }
+
+            result = null;
+            return false;
+
+        }
+
+        /// <summary>
         /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
         /// the value as an <see cref="int"/>. If a matching query string component isn't found, or the value could not
         /// be converted to an integer, <c>0</c> is returned instead.
@@ -62,6 +82,28 @@ namespace Skybrud.Essentials.AspNetCore {
         /// conversion is successful; otherwise <paramref name="fallback"/>.</returns>
         public static int GetInt32(this IQueryCollection? query, string key, int fallback) {
             return query == null ? fallback : query[key].ToInt32(fallback);
+        }
+
+        /// <summary>
+        /// Attempts to get the <see cref="int"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="int"/> value if successful; otherwise, <c>0</c>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetInt32(this IQueryCollection query, string key, out int result) {
+            return StringUtils.TryParseInt32(GetString(query, key), out result);
+        }
+
+        /// <summary>
+        /// Attempts to get the <see cref="int"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="int"/> value if successful; otherwise, <see langword="null"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetInt32(this IQueryCollection query, string key, [NotNullWhen(true)] out int? result) {
+            return StringUtils.TryParseInt32(GetString(query, key), out result);
         }
 
         /// <summary>
@@ -106,6 +148,28 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
+        /// Attempts to get the <see cref="long"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="long"/> value if successful; otherwise, <c>0</c>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetInt64(this IQueryCollection query, string key, out long result) {
+            return StringUtils.TryParseInt64(GetString(query, key), out result);
+        }
+
+        /// <summary>
+        /// Attempts to get the <see cref="long"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="long"/> value if successful; otherwise, <see langword="null"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetInt64(this IQueryCollection query, string key, [NotNullWhen(true)] out long? result) {
+            return StringUtils.TryParseInt64(GetString(query, key), out result);
+        }
+
+        /// <summary>
         /// Returns a <see cref="long"/> array based on the values of each query string component with the specified
         /// <paramref name="key"/>.
         /// </summary>
@@ -144,6 +208,28 @@ namespace Skybrud.Essentials.AspNetCore {
         /// conversion is successful; otherwise <paramref name="fallback"/>.</returns>
         public static float GetFloat(this IQueryCollection? query, string key, float fallback) {
             return query == null ? fallback : query[key].ToFloat(fallback);
+        }
+
+        /// <summary>
+        /// Attempts to get the <see cref="float"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="float"/> value if successful; otherwise, <c>0</c>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetFloat(this IQueryCollection query, string key, out float result) {
+            return StringUtils.TryParseFloat(GetString(query, key), out result);
+        }
+
+        /// <summary>
+        /// Attempts to get the <see cref="float"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="float"/> value if successful; otherwise, <see langword="null"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetFloat(this IQueryCollection query, string key, [NotNullWhen(true)] out float? result) {
+            return StringUtils.TryParseFloat(GetString(query, key), out result);
         }
 
         /// <summary>
@@ -188,6 +274,28 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
+        /// Attempts to get the <see cref="double"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="double"/> value if successful; otherwise, <c>0</c>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetDouble(this IQueryCollection query, string key, out double result) {
+            return StringUtils.TryParseDouble(GetString(query, key), out result);
+        }
+
+        /// <summary>
+        /// Attempts to get the <see cref="double"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="double"/> value if successful; otherwise, <see langword="null"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetDouble(this IQueryCollection query, string key, [NotNullWhen(true)] out double? result) {
+            return StringUtils.TryParseDouble(GetString(query, key), out result);
+        }
+
+        /// <summary>
         /// Returns a <see cref="double"/> array based on the values of each query string component with the specified
         /// <paramref name="key"/>.
         /// </summary>
@@ -226,6 +334,28 @@ namespace Skybrud.Essentials.AspNetCore {
         /// conversion is successful; otherwise <paramref name="fallback"/>.</returns>
         public static bool GetBoolean(this IQueryCollection? query, string key, bool fallback) {
             return query == null ? fallback : query[key].ToBoolean(fallback);
+        }
+
+        /// <summary>
+        /// Attempts to get the <see cref="bool"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="bool"/> value if successful; otherwise, <see langword="false"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetBoolean(this IQueryCollection query, string key, out bool result) {
+            return StringUtils.TryParseBoolean(GetString(query, key), out result);
+        }
+
+        /// <summary>
+        /// Attempts to get the <see cref="bool"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="bool"/> value if successful; otherwise, <see langword="null"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetBoolean(this IQueryCollection query, string key, [NotNullWhen(true)] out bool? result) {
+            return StringUtils.TryParseBoolean(GetString(query, key), out result);
         }
 
         /// <summary>
