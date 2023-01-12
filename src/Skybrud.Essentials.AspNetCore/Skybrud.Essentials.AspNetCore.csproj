@@ -33,7 +33,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="5.0.0" />
-    <PackageReference Include="Skybrud.Essentials" Version="1.1.42" />
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.45" />
   </ItemGroup>
 
   <!-- Include package icon for NuGet -->
