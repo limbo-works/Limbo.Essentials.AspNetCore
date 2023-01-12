@@ -1,3 +1,5 @@
 src/Skybrud.Essentials.AspNetCore/bin/
 src/Skybrud.Essentials.AspNetCore/obj/
 src/.vs/
+src/TestProject1/bin/
+src/TestProject1/obj/
