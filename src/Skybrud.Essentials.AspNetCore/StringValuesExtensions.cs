@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Primitives;
+﻿using System;
+using Microsoft.Extensions.Primitives;
 using Skybrud.Essentials.Strings.Extensions;
 using System.Linq;
 using Skybrud.Essentials.Strings;
@@ -155,6 +156,37 @@ namespace Skybrud.Essentials.AspNetCore {
         public static bool ToBoolean(this StringValues values, bool fallback) {
             string? str = values.FirstOrDefault();
             return str?.ToBoolean(fallback) ?? fallback;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="Guid" /> value. If the conversion fails, <see cref="Guid.Empty"/> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static Guid ToGuid(this StringValues values) {
+            string? str = values.FirstOrDefault();
+            return str?.ToGuid() ?? Guid.Empty;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="Guid" /> value. If the conversion fails, <paramref name="fallback" /> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static Guid ToGuid(this StringValues values, Guid fallback) {
+            string? str = values.FirstOrDefault();
+            return str?.ToGuid(fallback) ?? fallback;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="Guid" /> value. If the conversion fails, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static Guid? ToGuidOrNull(this StringValues values) {
+            string? str = values.FirstOrDefault();
+            return StringUtils.TryParseGuid(str, out Guid? result) ? result : null;
         }
 
     }

@@ -7,6 +7,7 @@ using System.Text;
 using Skybrud.Essentials.Strings.Extensions;
 using System.Diagnostics.CodeAnalysis;
 using Skybrud.Essentials.Strings;
+using System.Collections.Generic;
 
 namespace Skybrud.Essentials.AspNetCore {
 
@@ -296,8 +297,7 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
-        /// Returns a <see cref="double"/> array based on the values of each query string component with the specified
-        /// <paramref name="key"/>.
+        /// Returns a <see cref="double"/> array based on the values of each query string component with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="query">The query string.</param>
         /// <param name="key">The key of the query string components.</param>
@@ -356,6 +356,99 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetBoolean(this IQueryCollection query, string key, [NotNullWhen(true)] out bool? result) {
             return StringUtils.TryParseBoolean(GetString(query, key), out result);
+        }
+
+        /// <summary>
+        /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
+        /// the value as a <see cref="Guid"/>. If a matching query string component isn't found, or the value could not
+        /// be converted to a <see cref="Guid"/>, <see cref="Guid.Empty"/> is returned instead.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <returns>The converted <see cref="Guid"/> value if a matching query string component is found and the
+        /// conversion is successful; otherwise, <see cref="Guid.Empty"/>.</returns>
+        public static Guid GetGuid(this IQueryCollection? query, string key) {
+            return query == null ? Guid.Empty : query[key].ToGuid();
+        }
+
+        /// <summary>
+        /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
+        /// the value as a <see cref="Guid"/>. If a matching query string component isn't found, or the value could not
+        /// be converted to a <see cref="Guid"/>, <paramref name="fallback"/> is returned instead.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns>The converted <see cref="Guid"/> value if a matching query string component is found and the
+        /// conversion is successful; otherwise, <paramref name="fallback"/>.</returns>
+        public static Guid GetGuid(this IQueryCollection? query, string key, Guid fallback) {
+            return query == null ? fallback : query[key].ToGuid(fallback);
+        }
+
+        /// <summary>
+        /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
+        /// the value as a <see cref="Guid"/>. If a matching query string component isn't found, or the value could not
+        /// be converted to a <see cref="Guid"/>, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <returns>The converted <see cref="Guid"/> value if a matching query string component is found and the
+        /// conversion is successful; otherwise, <see langword="null"/>.</returns>
+        public static Guid? GetGuidOrNull(this IQueryCollection? query, string key) {
+            return query?[key].ToGuidOrNull();
+        }
+
+        /// <summary>
+        /// Returns an array of <see cref="Guid"/> values based on the values of each query string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <returns>An instance of <see cref="List{Guid}"/>.</returns>
+        public static Guid[] GetGuidArray(this IQueryCollection? query, string key) {
+            return query is null ? Array.Empty<Guid>() : query.GetGuidList(key).ToArray();
+        }
+
+        /// <summary>
+        /// Returns a list of <see cref="Guid"/> values based on the values of each query string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <returns>An instance of <see cref="List{Guid}"/>.</returns>
+        public static List<Guid> GetGuidList(this IQueryCollection? query, string key) {
+
+            List<Guid> guids = new();
+
+            StringValues? values = query?[key];
+            if (values is null) return guids;
+
+            foreach (string? value in values) {
+                if (StringUtils.TryParseGuid(value, out Guid guid)) guids.Add(guid);
+            }
+
+            return guids;
+
+        }
+
+        /// <summary>
+        /// Attempts to get the <see cref="Guid"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="Guid"/> value if successful; otherwise, <see cref="Guid.Empty"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetGuid(this IQueryCollection query, string key, out Guid result) {
+            return StringUtils.TryParseGuid(GetString(query, key), out result);
+        }
+
+        /// <summary>
+        /// Attempts to get the <see cref="bool"/> value of the string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, holds the <see cref="Guid"/> value if successful; otherwise, <see langword="null"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetGuid(this IQueryCollection query, string key, [NotNullWhen(true)] out Guid? result) {
+            return StringUtils.TryParseGuid(GetString(query, key), out result);
         }
 
         /// <summary>
