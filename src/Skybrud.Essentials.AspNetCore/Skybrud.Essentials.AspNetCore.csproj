@@ -8,12 +8,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>1.0.0-alpha008</VersionPrefix>
+    <VersionPrefix>1.0.0-alpha009</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Product>Skybrud.Essentials</Product>
     <Authors>Anders Bjerner</Authors>
-    <Copyright>Copyright © 2022</Copyright>
+    <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
     <Description>Skybrud.Essentials addon for working with ASP.NET Core.</Description>
   </PropertyGroup>
 
