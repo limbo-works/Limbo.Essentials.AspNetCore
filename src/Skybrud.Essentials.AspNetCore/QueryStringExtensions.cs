@@ -5,6 +5,7 @@ using Microsoft.Extensions.Primitives;
 using System.Net;
 using System.Text;
 using Skybrud.Essentials.Strings.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Skybrud.Essentials.AspNetCore {
 
@@ -33,7 +34,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>The value of the first query string component matching <paramref name="key"/>; otherwise <paramref name="fallback"/>.</returns>
         public static string GetString(this IQueryCollection? query, string key, string fallback) {
-            return query.GetString(key).HasValue(out string value) ? value : fallback;
+            return query.GetString(key).HasValue(out string? value) ? value! : fallback;
         }
 
         /// <summary>
