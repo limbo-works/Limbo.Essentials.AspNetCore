@@ -243,7 +243,8 @@ namespace Skybrud.Essentials.AspNetCore {
 
             foreach ((string key, StringValues stringValues) in query) {
 
-                foreach (string value in stringValues) {
+                foreach (string? value in stringValues) {
+                    if (value is null) continue;
                     if (i++ > 0) sb.Append('&');
                     sb.Append(WebUtility.UrlEncode(key));
                     sb.Append('=');
