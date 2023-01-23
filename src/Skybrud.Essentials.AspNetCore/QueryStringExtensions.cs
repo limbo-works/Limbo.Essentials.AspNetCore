@@ -405,7 +405,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <returns>An instance of <see cref="List{Guid}"/>.</returns>
         public static Guid[] GetGuidArray(this IQueryCollection? query, string key) {
-            return query is null ? Array.Empty<Guid>() : query.GetGuidList(key).ToArray();
+            return query?[key].ToGuidArray() ?? Array.Empty<Guid>();
         }
 
         /// <summary>
@@ -415,18 +415,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <returns>An instance of <see cref="List{Guid}"/>.</returns>
         public static List<Guid> GetGuidList(this IQueryCollection? query, string key) {
-
-            List<Guid> guids = new();
-
-            StringValues? values = query?[key];
-            if (values is null) return guids;
-
-            foreach (string? value in values) {
-                if (StringUtils.TryParseGuid(value, out Guid guid)) guids.Add(guid);
-            }
-
-            return guids;
-
+            return query?[key].ToGuidList() ?? new List<Guid>();
         }
 
         /// <summary>

@@ -60,15 +60,16 @@ namespace TestProject1 {
         public void GetGuidArray() {
 
             IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
-                {"guids", new StringValues(new[] { "7ce565ca-3dfe-4bc8-9166-4c4a5d1a9cbb", "a11c5663-d025-49be-93d7-876226dfd9b1", "nope", null })}
+                {"guids", new StringValues(new[] { "7ce565ca-3dfe-4bc8-9166-4c4a5d1a9cbb,8a2a3f66-898c-4b1e-8db7-efb8c08d4669", "a11c5663-d025-49be-93d7-876226dfd9b1", "nope", null })}
             });
 
             var guids = query.GetGuidArray("guids");
 
-            Assert.AreEqual(2, guids.Length);
+            Assert.AreEqual(3, guids.Length);
 
             Assert.AreEqual("7ce565ca-3dfe-4bc8-9166-4c4a5d1a9cbb", guids[0].ToString());
-            Assert.AreEqual("a11c5663-d025-49be-93d7-876226dfd9b1", guids[1].ToString());
+            Assert.AreEqual("8a2a3f66-898c-4b1e-8db7-efb8c08d4669", guids[1].ToString());
+            Assert.AreEqual("a11c5663-d025-49be-93d7-876226dfd9b1", guids[2].ToString());
 
         }
 
@@ -76,15 +77,16 @@ namespace TestProject1 {
         public void GetGuidList() {
 
             IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
-                {"guids", new StringValues(new[] { "7ce565ca-3dfe-4bc8-9166-4c4a5d1a9cbb", "a11c5663-d025-49be-93d7-876226dfd9b1", "nope", null })}
+                {"guids", new StringValues(new[] { "7ce565ca-3dfe-4bc8-9166-4c4a5d1a9cbb,8a2a3f66-898c-4b1e-8db7-efb8c08d4669", "a11c5663-d025-49be-93d7-876226dfd9b1", "nope", null })}
             });
 
             var guids = query.GetGuidList("guids");
 
-            Assert.AreEqual(2, guids.Count);
+            Assert.AreEqual(3, guids.Count);
 
             Assert.AreEqual("7ce565ca-3dfe-4bc8-9166-4c4a5d1a9cbb", guids[0].ToString());
-            Assert.AreEqual("a11c5663-d025-49be-93d7-876226dfd9b1", guids[1].ToString());
+            Assert.AreEqual("8a2a3f66-898c-4b1e-8db7-efb8c08d4669", guids[1].ToString());
+            Assert.AreEqual("a11c5663-d025-49be-93d7-876226dfd9b1", guids[2].ToString());
 
         }
 

@@ -189,6 +189,24 @@ namespace Skybrud.Essentials.AspNetCore {
             return StringUtils.TryParseGuid(str, out Guid? result) ? result : null;
         }
 
+        /// <summary>
+        /// Parses the specified array of string <paramref name="values"/> into a <see cref="Guid"/> array.
+        /// </summary>
+        /// <param name="values">The string values.</param>
+        /// <returns>An array of <see cref="Guid"/>.</returns>
+        public static Guid[] ToGuidArray(this StringValues values) {
+            return values.SelectMany(StringUtils.ParseGuidArray).ToArray();
+        }
+
+        /// <summary>
+        /// Parses the specified array of string <paramref name="values"/> into a <see cref="Guid"/> list.
+        /// </summary>
+        /// <param name="values">The string values.</param>
+        /// <returns>A list of <see cref="Guid"/>.</returns>
+        public static List<Guid> ToGuidList(this StringValues values) {
+            return values.SelectMany(StringUtils.ParseGuidList).ToList();
+        }
+
     }
 
 }
