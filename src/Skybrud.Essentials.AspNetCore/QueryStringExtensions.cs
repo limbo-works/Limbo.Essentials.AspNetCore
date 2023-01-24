@@ -108,8 +108,7 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
-        /// Returns an <see cref="int"/> array based on the values of each query string component with the specified
-        /// <paramref name="key"/>.
+        /// Returns an <see cref="int"/> array based on the values of each query string component with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="query">The query string.</param>
         /// <param name="key">The key of the query string components.</param>
@@ -119,6 +118,19 @@ namespace Skybrud.Essentials.AspNetCore {
         /// value will be ignored.</remarks>
         public static int[] GetInt32Array(this IQueryCollection? query, string key) {
             return query == null ? Array.Empty<int>() : query[key].ToInt32Array();
+        }
+
+        /// <summary>
+        /// Returns an <see cref="int"/> array based on the values of each query string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string components.</param>
+        /// <returns>An <see cref="int"/> list representing the converted values.</returns>
+        /// <remarks>The value of each query string component may themselves be a separated list of <see cref="int"/>
+        /// values - eg. separated by commas. Values that can not be converted to a corresponding <see cref="int"/>
+        /// value will be ignored.</remarks>
+        public static List<int> GetInt32List(this IQueryCollection? query, string key) {
+            return query?[key].ToInt32List() ?? new List<int>();
         }
 
         /// <summary>
@@ -171,8 +183,7 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
-        /// Returns a <see cref="long"/> array based on the values of each query string component with the specified
-        /// <paramref name="key"/>.
+        /// Returns a <see cref="long"/> array based of the values of each query string component with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="query">The query string.</param>
         /// <param name="key">The key of the query string components.</param>
@@ -182,6 +193,19 @@ namespace Skybrud.Essentials.AspNetCore {
         /// value will be ignored.</remarks>
         public static long[] GetInt64Array(this IQueryCollection? query, string key) {
             return query == null ? Array.Empty<long>() : query[key].ToInt64Array();
+        }
+
+        /// <summary>
+        /// Returns a <see cref="long"/> list based of the values of each query string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string components.</param>
+        /// <returns>A <see cref="long"/> list representing the converted values.</returns>
+        /// <remarks>The value of each query string component may themselves be a separated list of <see cref="long"/>
+        /// values - eg. separated by commas. Values that can not be converted to a corresponding <see cref="long"/>
+        /// value will be ignored.</remarks>
+        public static List<long> GetInt64List(this IQueryCollection? query, string key) {
+            return query?[key].ToInt64List() ?? new List<long>();
         }
 
         /// <summary>
@@ -234,8 +258,7 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
-        /// Returns a <see cref="float"/> array based on the values of each query string component with the specified
-        /// <paramref name="key"/>.
+        /// Returns a <see cref="float"/> array based on the values of each query string component with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="query">The query string.</param>
         /// <param name="key">The key of the query string components.</param>
@@ -244,7 +267,20 @@ namespace Skybrud.Essentials.AspNetCore {
         /// values - eg. separated by commas. Values that can not be converted to a corresponding <see cref="float"/>
         /// value will be ignored.</remarks>
         public static float[] GetFloatArray(this IQueryCollection? query, string key) {
-            return query == null ? Array.Empty<float>() : query[key].ToFloatArray();
+            return query?[key].ToFloatArray() ?? Array.Empty<float>();
+        }
+
+        /// <summary>
+        /// Returns a <see cref="float"/> list based on the values of each query string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string components.</param>
+        /// <returns>A <see cref="float"/> list representing the converted values.</returns>
+        /// <remarks>The value of each query string component may themselves be a separated list of <see cref="float"/>
+        /// values - eg. separated by commas. Values that can not be converted to a corresponding <see cref="float"/>
+        /// value will be ignored.</remarks>
+        public static List<float> GetFloatList(this IQueryCollection? query, string key) {
+            return query?[key].ToFloatList() ?? new List<float>();
         }
 
         /// <summary>
@@ -307,6 +343,19 @@ namespace Skybrud.Essentials.AspNetCore {
         /// value will be ignored.</remarks>
         public static double[] GetDoubleArray(this IQueryCollection? query, string key) {
             return query == null ? Array.Empty<double>() : query[key].ToDoubleArray();
+        }
+
+        /// <summary>
+        /// Returns a <see cref="double"/> list based on the values of each query string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string components.</param>
+        /// <returns>A <see cref="double"/> list representing the converted values.</returns>
+        /// <remarks>The value of each query string component may themselves be a separated list of <see cref="double"/>
+        /// values - eg. separated by commas. Values that can not be converted to a corresponding <see cref="double"/>
+        /// value will be ignored.</remarks>
+        public static List<double> GetDoubleList(this IQueryCollection? query, string key) {
+            return query?[key].ToDoubleList() ?? new List<double>();
         }
 
         /// <summary>

@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Primitives;
@@ -7,6 +8,158 @@ namespace TestProject1 {
 
     [TestClass]
     public class QueryStringTests {
+
+        #region Int32
+
+        [TestMethod]
+        public void GetInt32Array() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"ints", new StringValues(new[] { "1,2", "3", "nope", null })}
+            });
+
+            var array = query.GetInt32Array("ints");
+
+            Assert.AreEqual(3, array.Length);
+
+            Assert.AreEqual(1, array[0]);
+            Assert.AreEqual(2, array[1]);
+            Assert.AreEqual(3, array[2]);
+
+        }
+
+        [TestMethod]
+        public void GetInt32List() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"ints", new StringValues(new[] { "1,2", "3", "nope", null })}
+            });
+
+            var array = query.GetInt32List("ints");
+
+            Assert.AreEqual(3, array.Count);
+
+            Assert.AreEqual(1, array[0]);
+            Assert.AreEqual(2, array[1]);
+            Assert.AreEqual(3, array[2]);
+
+        }
+
+        #endregion
+
+        #region Int64
+
+        [TestMethod]
+        public void GetInt64Array() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"longs", new StringValues(new[] { "1,2", "3", "nope", null })}
+            });
+
+            var array = query.GetInt64Array("longs");
+
+            Assert.AreEqual(3, array.Length);
+
+            Assert.AreEqual(1, array[0]);
+            Assert.AreEqual(2, array[1]);
+            Assert.AreEqual(3, array[2]);
+
+        }
+
+        [TestMethod]
+        public void GetInt64List() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"longs", new StringValues(new[] { "1,2", "3", "nope", null })}
+            });
+
+            var array = query.GetInt64List("longs");
+
+            Assert.AreEqual(3, array.Count);
+
+            Assert.AreEqual(1, array[0]);
+            Assert.AreEqual(2, array[1]);
+            Assert.AreEqual(3, array[2]);
+
+        }
+
+        #endregion
+
+        #region Float / Single
+
+        [TestMethod]
+        public void GetFloatArray() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"floats", new StringValues(new[] { "1,2", "3.4", "nope", null })}
+            });
+
+            var array = query.GetFloatArray("floats");
+
+            Assert.AreEqual(3, array.Length);
+
+            Assert.AreEqual(1, array[0]);
+            Assert.AreEqual(2, array[1]);
+            Assert.AreEqual("3.4", array[2].ToString("N1", CultureInfo.InvariantCulture));
+
+        }
+
+        [TestMethod]
+        public void GetFLoatList() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"floats", new StringValues(new[] { "1,2", "3.4", "nope", null })}
+            });
+
+            var array = query.GetFloatList("floats");
+
+            Assert.AreEqual(3, array.Count);
+
+            Assert.AreEqual(1, array[0]);
+            Assert.AreEqual(2, array[1]);
+            Assert.AreEqual("3.4", array[2].ToString("N1", CultureInfo.InvariantCulture));
+
+        }
+
+        #endregion
+
+        #region Double
+
+        [TestMethod]
+        public void GetDoubleArray() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"doubles", new StringValues(new[] { "1,2", "3.4", "nope", null })}
+            });
+
+            var array = query.GetDoubleArray("doubles");
+
+            Assert.AreEqual(3, array.Length);
+
+            Assert.AreEqual(1, array[0]);
+            Assert.AreEqual(2, array[1]);
+            Assert.AreEqual("3.4", array[2].ToString("N1", CultureInfo.InvariantCulture));
+
+        }
+
+        [TestMethod]
+        public void GetDoubleList() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"doubles", new StringValues(new[] { "1,2", "3.4", "nope", null })}
+            });
+
+            var array = query.GetDoubleList("doubles");
+
+            Assert.AreEqual(3, array.Count);
+
+            Assert.AreEqual(1, array[0]);
+            Assert.AreEqual(2, array[1]);
+            Assert.AreEqual("3.4", array[2].ToString("N1", CultureInfo.InvariantCulture));
+
+        }
+
+        #endregion
 
         #region Guids
 
