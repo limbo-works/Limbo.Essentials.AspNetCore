@@ -9,6 +9,8 @@ using System.Diagnostics.CodeAnalysis;
 using Skybrud.Essentials.Strings;
 using System.Collections.Generic;
 
+// ReSharper disable ForeachCanBePartlyConvertedToQueryUsingAnotherGetEnumerator
+
 namespace Skybrud.Essentials.AspNetCore {
 
     /// <summary>
@@ -554,6 +556,106 @@ namespace Skybrud.Essentials.AspNetCore {
         public static bool TryGetGuid(this IQueryCollection query, string key, [NotNullWhen(true)] out Guid? result) {
             return StringUtils.TryParseGuid(GetString(query, key), out result);
         }
+
+        #region GetEnum...
+
+        /// <summary>
+        /// Returns the corresponding <typeparamref name="TEnum"/> value of the first query string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <returns>The converted <typeparamref name="TEnum"/> value if a matching query string component is found and the
+        /// conversion is successful; otherwise, the default value of <typeparamref name="TEnum"/>.</returns>
+        public static TEnum ToEnum<TEnum>(this IQueryCollection? query, string key) where TEnum : struct, Enum {
+            return (query?[key]).ToEnum<TEnum>();
+        }
+
+        /// <summary>
+        /// Returns the corresponding <typeparamref name="TEnum"/> value of the first query string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="fallback">The fallback value in case a value isn't found or cant be converted.</param>
+        /// <returns>The converted <typeparamref name="TEnum"/> value if a matching query string component is found and the
+        /// conversion is successful; otherwise, <paramref name="fallback"/>.</returns>
+        public static TEnum ToEnum<TEnum>(this IQueryCollection? query, string key, TEnum fallback) where TEnum : struct, Enum {
+            return (query?[key]).ToEnum(fallback);
+        }
+
+        /// <summary>
+        /// Returns the corresponding <typeparamref name="TEnum"/> value of the first query string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <returns>The converted <typeparamref name="TEnum"/> value if a matching query string component is found and the
+        /// conversion is successful; otherwise, <see langword="null"/>.</returns>
+        public static TEnum? ToEnumOrNull<TEnum>(this IQueryCollection? query, string key) where TEnum : struct, Enum {
+            return (query?[key]).ToEnumOrNull<TEnum>();
+        }
+
+        /// <summary>
+        /// Returns an array of <typeparamref name="TEnum"/> values representing the values of each query string component
+        /// matching the specified <paramref name="key"/>.
+        ///
+        /// Notice that this method support both multiple query string components with the same <paramref name="key"/>
+        /// as well as query string components where the value is a comma separated string or similar. Supported
+        /// separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and
+        /// tab (<c>\t</c>).
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component(s).</param>
+        /// <returns>An array of <typeparamref name="TEnum"/>.</returns>
+        public static TEnum[] GetEnumArray<TEnum>(this IQueryCollection? query, string key) where TEnum : struct, Enum {
+            return (query?[key]).ToEnumArray<TEnum>();
+        }
+
+        /// <summary>
+        /// Returns an array of <typeparamref name="TEnum"/> values representing the values of each query string component
+        /// matching the specified <paramref name="key"/>.
+        ///
+        /// Notice that this method support both multiple query string components with the same <paramref name="key"/>
+        /// as well as query string components where the value is separated by one of the following <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component(s).</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An array of <typeparamref name="TEnum"/>.</returns>
+        public static TEnum[] GetEnumArray<TEnum>(this IQueryCollection? query, string key, params char[] separators) where TEnum : struct, Enum {
+            return (query?[key]).ToEnumArray<TEnum>(separators);
+        }
+
+        /// <summary>
+        /// Returns a list of <typeparamref name="TEnum"/> values representing the values of each query string component
+        /// matching the specified <paramref name="key"/>.
+        ///
+        /// Notice that this method support both multiple query string components with the same <paramref name="key"/>
+        /// as well as query string components where the value is a comma separated string or similar. Supported
+        /// separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and
+        /// tab (<c>\t</c>).
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component(s).</param>
+        /// <returns>A list of <typeparamref name="TEnum"/>.</returns>
+        public static List<TEnum> GetEnumList<TEnum>(this IQueryCollection? query, string key) where TEnum : struct, Enum {
+            return (query?[key]).ToEnumList<TEnum>();
+        }
+
+        /// <summary>
+        /// Returns a list of <typeparamref name="TEnum"/> values representing the values of each query string component
+        /// matching the specified <paramref name="key"/>.
+        ///
+        /// Notice that this method support both multiple query string components with the same <paramref name="key"/>
+        /// as well as query string components where the value is separated by one of the following <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component(s).</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of <typeparamref name="TEnum"/>.</returns>
+        public static List<TEnum> GetEnumList<TEnum>(this IQueryCollection? query, string key, params char[] separators) where TEnum : struct, Enum {
+            return (query?[key]).ToEnumList<TEnum>(separators);
+        }
+
+        #endregion
 
         /// <summary>
         /// Returns an URL encoded string representing the specified <paramref name="query"/>.

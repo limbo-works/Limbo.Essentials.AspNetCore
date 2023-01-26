@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Primitives;
 using Skybrud.Essentials.Strings.Extensions;
 using System.Linq;
+using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
+
+// ReSharper disable ForeachCanBePartlyConvertedToQueryUsingAnotherGetEnumerator
 
 namespace Skybrud.Essentials.AspNetCore {
 
@@ -11,6 +14,8 @@ namespace Skybrud.Essentials.AspNetCore {
     /// Various extension methods for working with the <see cref="StringValues"/> class.
     /// </summary>
     public static class StringValuesExtensions {
+
+        internal static readonly char[] DefaultSeparators = { ',', ' ', '\r', '\n', '\t' };
 
         #region ToString...
 
@@ -285,6 +290,100 @@ namespace Skybrud.Essentials.AspNetCore {
         public static List<Guid> ToGuidList(this StringValues values) {
             return values.SelectMany(StringUtils.ParseGuidList).ToList();
         }
+
+        #region ToEnum...
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a corresponding <typeparamref name="TEnum"/> value. If
+        /// the conversion fails, the default value of <typeparamref name="TEnum"/> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static TEnum ToEnum<TEnum>(this StringValues? values) where TEnum : struct, Enum {
+            string? str = values?.FirstOrDefault();
+            return EnumUtils.TryParseEnum(str, out TEnum? result) ? result.Value : default;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a corresponding <typeparamref name="TEnum"/> value. If
+        /// the conversion fails, <paramref name="fallback" /> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static TEnum ToEnum<TEnum>(this StringValues? values, TEnum fallback) where TEnum : struct, Enum {
+            string? str = values?.FirstOrDefault();
+            return EnumUtils.TryParseEnum(str, out TEnum? result) ? result.Value : fallback;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a corresponding <typeparamref name="TEnum"/> value. If the conversion fails, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static TEnum? ToEnumOrNull<TEnum>(this StringValues? values) where TEnum : struct, Enum {
+            string? str = values?.FirstOrDefault();
+            return EnumUtils.TryParseEnum(str, out TEnum? result) ? result : null;
+        }
+
+        /// <summary>
+        /// Parses the specified array of string <paramref name="values"/> into a corresponding <typeparamref name="TEnum"/> array.
+        /// </summary>
+        /// <param name="values">The string values.</param>
+        /// <returns>An array of <typeparamref name="TEnum"/>.</returns>
+        public static TEnum[] ToEnumArray<TEnum>(this StringValues? values) where TEnum : struct, Enum {
+            return values is { Count: > 0 } ? ToEnumList<TEnum>(values).ToArray() : Array.Empty<TEnum>();
+        }
+
+        /// <summary>
+        /// Parses the specified array of string <paramref name="values"/> into a corresponding <typeparamref name="TEnum"/> array.
+        /// </summary>
+        /// <param name="values">The string values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An array of <typeparamref name="TEnum"/>.</returns>
+        public static TEnum[] ToEnumArray<TEnum>(this StringValues? values, params char[] separators) where TEnum : struct, Enum {
+            return values is { Count: > 0 } ? ToEnumList<TEnum>(values, separators).ToArray() : Array.Empty<TEnum>();
+        }
+
+        /// <summary>
+        /// Parses the specified array of string <paramref name="values"/> into a <typeparamref name="TEnum"/> list.
+        /// </summary>
+        /// <param name="values">The string values.</param>
+        /// <returns>A list of <typeparamref name="TEnum"/>.</returns>
+        public static List<TEnum> ToEnumList<TEnum>(this StringValues? values) where TEnum : struct, Enum {
+            return ToEnumList<TEnum>(values, DefaultSeparators);
+        }
+
+        /// <summary>
+        /// Parses the specified array of string <paramref name="values"/> into a <typeparamref name="TEnum"/> list.
+        /// </summary>
+        /// <param name="values">The string values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of <typeparamref name="TEnum"/>.</returns>
+        public static List<TEnum> ToEnumList<TEnum>(this StringValues? values, params char[] separators) where TEnum : struct, Enum {
+
+            List<TEnum> list = new();
+            if (values is null) return list;
+
+            foreach (string? value in values) {
+
+                if (value is null) continue;
+
+                foreach (string piece in value.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+
+                    if (EnumUtils.TryParseEnum(piece, out TEnum? result)) {
+                        list.Add(result.Value);
+                    }
+
+                }
+
+            }
+
+            return list;
+
+        }
+
+        #endregion
 
     }
 
