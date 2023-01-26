@@ -59,6 +59,8 @@ namespace Skybrud.Essentials.AspNetCore {
 
         #endregion
 
+        #region ToInt32...
+
         /// <summary>
         /// Converts the specified <paramref name="values" /> to an <see cref="int" /> value.
         /// </summary>
@@ -98,6 +100,10 @@ namespace Skybrud.Essentials.AspNetCore {
         public static List<int> ToInt32List(this StringValues values) {
             return values.SelectMany(StringUtils.ParseInt32List).ToList();
         }
+
+        #endregion
+
+        #region ToInt64...
 
         /// <summary>
         /// Converts the specified <paramref name="values" /> to a <see cref="long" /> value.
@@ -139,6 +145,10 @@ namespace Skybrud.Essentials.AspNetCore {
             return values.SelectMany(StringUtils.ParseInt64List).ToList();
         }
 
+        #endregion
+
+        #region ToFloat...
+
         /// <summary>
         /// Converts the specified <paramref name="values" /> to a <see cref="float" /> value.
         /// </summary>
@@ -178,6 +188,10 @@ namespace Skybrud.Essentials.AspNetCore {
         public static List<float> ToFloatList(this StringValues values) {
             return values.SelectMany(StringUtils.ParseFloatList).ToList();
         }
+
+        #endregion
+
+        #region ToDouble...
 
         /// <summary>
         /// Converts the specified <paramref name="values" /> to a <see cref="double" /> value.
@@ -219,6 +233,10 @@ namespace Skybrud.Essentials.AspNetCore {
             return values.SelectMany(StringUtils.ParseDoubleList).ToList();
         }
 
+        #endregion
+
+        #region ToBoolean...
+
         /// <summary>
         /// Converts the specified <paramref name="values" /> to a <see cref="bool" /> value. If the conversion fails,
         /// <c>false</c> is returned instead.
@@ -241,6 +259,10 @@ namespace Skybrud.Essentials.AspNetCore {
             string? str = values.FirstOrDefault();
             return str?.ToBoolean(fallback) ?? fallback;
         }
+
+        #endregion
+
+        #region ToGuid...
 
         /// <summary>
         /// Converts the specified <paramref name="values" /> to a <see cref="Guid" /> value. If the conversion fails, <see cref="Guid.Empty"/> is returned instead.
@@ -290,6 +312,8 @@ namespace Skybrud.Essentials.AspNetCore {
         public static List<Guid> ToGuidList(this StringValues values) {
             return values.SelectMany(StringUtils.ParseGuidList).ToList();
         }
+
+        #endregion
 
         #region ToEnum...
 

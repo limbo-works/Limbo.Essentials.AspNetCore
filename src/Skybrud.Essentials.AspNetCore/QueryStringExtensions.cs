@@ -126,6 +126,8 @@ namespace Skybrud.Essentials.AspNetCore {
 
         #endregion
 
+        #region GetInt32...
+
         /// <summary>
         /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
         /// the value as an <see cref="int"/>. If a matching query string component isn't found, or the value could not
@@ -200,6 +202,10 @@ namespace Skybrud.Essentials.AspNetCore {
         public static List<int> GetInt32List(this IQueryCollection? query, string key) {
             return query?[key].ToInt32List() ?? new List<int>();
         }
+
+        #endregion
+
+        #region GetInt64...
 
         /// <summary>
         /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
@@ -276,6 +282,10 @@ namespace Skybrud.Essentials.AspNetCore {
             return query?[key].ToInt64List() ?? new List<long>();
         }
 
+        #endregion
+
+        #region GetFloat...
+
         /// <summary>
         /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
         /// the value as a <see cref="float"/>. If a matching query string component isn't found, or the value could
@@ -350,6 +360,10 @@ namespace Skybrud.Essentials.AspNetCore {
         public static List<float> GetFloatList(this IQueryCollection? query, string key) {
             return query?[key].ToFloatList() ?? new List<float>();
         }
+
+        #endregion
+
+        #region GetDouble...
 
         /// <summary>
         /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
@@ -426,6 +440,10 @@ namespace Skybrud.Essentials.AspNetCore {
             return query?[key].ToDoubleList() ?? new List<double>();
         }
 
+        #endregion
+
+        #region GetBoolean...
+
         /// <summary>
         /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
         /// the value as a <see cref="bool"/>. If a matching query string component isn't found, or the value could not
@@ -474,6 +492,10 @@ namespace Skybrud.Essentials.AspNetCore {
         public static bool TryGetBoolean(this IQueryCollection query, string key, [NotNullWhen(true)] out bool? result) {
             return StringUtils.TryParseBoolean(GetString(query, key), out result);
         }
+
+        #endregion
+
+        #region GetGuid...
 
         /// <summary>
         /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
@@ -556,6 +578,8 @@ namespace Skybrud.Essentials.AspNetCore {
         public static bool TryGetGuid(this IQueryCollection query, string key, [NotNullWhen(true)] out Guid? result) {
             return StringUtils.TryParseGuid(GetString(query, key), out result);
         }
+
+        #endregion
 
         #region GetEnum...
 
