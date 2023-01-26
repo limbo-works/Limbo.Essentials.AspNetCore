@@ -12,6 +12,35 @@ namespace TestProject1 {
         #region Int32
 
         [TestMethod]
+        public void GetInt32() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"id", new StringValues("1")},
+                {"ids", new StringValues(new []{"1", "2", "3"})},
+                {"moreIds", new StringValues(new []{"5,6", "7", "8"})}
+            });
+
+            int id = query.GetInt32("id");
+            Assert.AreEqual(1, id, "#1");
+
+            int id2 = query.GetInt32("id2");
+            Assert.AreEqual(0, id2, "#2");
+
+            int id3 = query.GetInt32("id2", 2);
+            Assert.AreEqual(2, id3, "#3");
+
+            int? id4 = query.GetInt32OrNull("id3");
+            Assert.IsNull(id4, "#4");
+
+            int id5 = query.GetInt32("ids");
+            Assert.AreEqual(1, id5, "#5");
+
+            int id6 = query.GetInt32("moreIds");
+            Assert.AreEqual(0, id6, "#6");
+
+        }
+
+        [TestMethod]
         public void GetInt32Array() {
 
             IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
@@ -48,6 +77,35 @@ namespace TestProject1 {
         #endregion
 
         #region Int64
+
+        [TestMethod]
+        public void GetInt64() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"id", new StringValues("1")},
+                {"ids", new StringValues(new []{"1", "2", "3"})},
+                {"moreIds", new StringValues(new []{"5,6", "7", "8"})}
+            });
+
+            long id = query.GetInt64("id");
+            Assert.AreEqual(1, id, "#1");
+
+            long id2 = query.GetInt64("id2");
+            Assert.AreEqual(0, id2, "#2");
+
+            long id3 = query.GetInt64("id2", 2);
+            Assert.AreEqual(2, id3, "#3");
+
+            long? id4 = query.GetInt64OrNull("id3");
+            Assert.IsNull(id4, "#4");
+
+            long id5 = query.GetInt64("ids");
+            Assert.AreEqual(1, id5, "#5");
+
+            long id6 = query.GetInt64("moreIds");
+            Assert.AreEqual(0, id6, "#6");
+
+        }
 
         [TestMethod]
         public void GetInt64Array() {
@@ -88,6 +146,33 @@ namespace TestProject1 {
         #region Float / Single
 
         [TestMethod]
+        public void GetFloat() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"pi", new StringValues("3.14")},
+                {"values", new StringValues(new []{"3.14", "6.28", "9.42"})},
+                {"otherValues", new StringValues(new []{"3.14,6.28", "9.42"})}
+            });
+
+            // Returns "3.14"
+            float pi = query.GetFloat("pi");
+            Assert.AreEqual("3.14", pi.ToString("F2", CultureInfo.InvariantCulture), "#1");
+
+            // Returns "0.00" (implicit fallback)
+            float meh = query.GetFloat("meh");
+            Assert.AreEqual("0.00", meh.ToString("F2", CultureInfo.InvariantCulture), "#2");
+
+            // Returns "1.23" (explicit fallback)
+            float meh2 = query.GetFloat("meh", 1.23f);
+            Assert.AreEqual("1.23", meh2.ToString("F2", CultureInfo.InvariantCulture), "#3");
+
+            // Returns "null"
+            float? meh3 = query.GetFloatOrNull("meh");
+            Assert.IsNull(meh3, "#4");
+
+        }
+
+        [TestMethod]
         public void GetFloatArray() {
 
             IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
@@ -124,6 +209,33 @@ namespace TestProject1 {
         #endregion
 
         #region Double
+
+        [TestMethod]
+        public void GetDouble() {
+
+            IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
+                {"pi", new StringValues("3.1415926535")},
+                {"values", new StringValues(new []{"3.1415926535", "6.283185307", "9.4247779605"})},
+                {"otherValues", new StringValues(new []{"3.1415926535,6.283185307", "9.4247779605"})}
+            });
+
+            // Returns "3.1415926535"
+            double pi = query.GetDouble("pi");
+            Assert.AreEqual("3.1415926535", pi.ToString("F10", CultureInfo.InvariantCulture), "#1");
+
+            // Returns "0.000" (implicit fallback)
+            double meh = query.GetDouble("meh");
+            Assert.AreEqual("0.000", meh.ToString("F3", CultureInfo.InvariantCulture), "#2");
+
+            // Returns "1.230" (explicit fallback)
+            double meh2 = query.GetDouble("meh", 1.23f);
+            Assert.AreEqual("1.230", meh2.ToString("F3", CultureInfo.InvariantCulture), "#3");
+
+            // Returns "null"
+            double? meh3 = query.GetDoubleOrNull("meh");
+            Assert.IsNull(meh3, "#4");
+
+        }
 
         [TestMethod]
         public void GetDoubleArray() {

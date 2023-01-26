@@ -414,7 +414,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <returns>The converted <see cref="double"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise <c>0</c>.</returns>
         public static double GetDouble(this IQueryCollection? query, string key) {
-            return query == null ? 0 : query[key].ToInt64();
+            return query == null ? 0 : query[key].ToDouble();
         }
 
         /// <summary>
