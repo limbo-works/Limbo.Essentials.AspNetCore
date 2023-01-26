@@ -16,6 +16,8 @@ namespace Skybrud.Essentials.AspNetCore {
     /// </summary>
     public static class QueryStringExtensions {
 
+        #region GetString...
+
         /// <summary>
         /// Returns the value of the first query string component with the specified <paramref name="key"/>, or
         /// <c>null</c> if not found.
@@ -40,6 +42,68 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
+        /// Returns an array of <see cref="string"/> values representing the values of each query string component
+        /// matching the specified <paramref name="key"/>.
+        ///
+        /// Notice that this method support both multiple query string components with the same <paramref name="key"/>
+        /// as well as query string components where the value is a comma separated string or similar. Supported
+        /// separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and
+        /// tab (<c>\t</c>).
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component(s).</param>
+        /// <returns>An array of <see cref="string"/>.</returns>
+        public static string[] GetStringArray(this IQueryCollection? query, string key) {
+            return (query?[key]).ToStringArray();
+        }
+
+        /// <summary>
+        /// Returns an array of <see cref="string"/> values representing the values of each query string component
+        /// matching the specified <paramref name="key"/>.
+        ///
+        /// Notice that this method support both multiple query string components with the same <paramref name="key"/>
+        /// as well as query string components where the value is separated by one of the following <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component(s).</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An array of <see cref="string"/>.</returns>
+        public static string[] GetStringArray(this IQueryCollection? query, string key, params char[] separators) {
+            return (query?[key]).ToStringArray(separators);
+        }
+
+        /// <summary>
+        /// Returns a list of <see cref="string"/> representing the values of each query string component
+        /// matching the specified <paramref name="key"/>.
+        ///
+        /// Notice that this method support both multiple query string components with the same <paramref name="key"/>
+        /// as well as query string components where the value is a comma separated string or similar. Supported
+        /// separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and
+        /// tab (<c>\t</c>).
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component(s).</param>
+        /// <returns>An array of <see cref="string"/>.</returns>
+        public static List<string> GetStringList(this IQueryCollection? query, string key) {
+            return (query?[key]).ToStringList();
+        }
+
+        /// <summary>
+        /// Returns a list of <see cref="string"/> values representing the values of each query string component
+        /// matching the specified <paramref name="key"/>.
+        ///
+        /// Notice that this method support both multiple query string components with the same <paramref name="key"/>
+        /// as well as query string components where the value is separated by one of the following <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component(s).</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An array of <see cref="string"/>.</returns>
+        public static List<string> GetStringList(this IQueryCollection? query, string key, params char[] separators) {
+            return (query?[key]).ToStringList(separators);
+        }
+
+        /// <summary>
         /// Attempts to get the string value of the string component with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="query">The query string.</param>
@@ -57,6 +121,8 @@ namespace Skybrud.Essentials.AspNetCore {
             return false;
 
         }
+
+        #endregion
 
         /// <summary>
         /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns

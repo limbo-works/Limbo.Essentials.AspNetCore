@@ -12,6 +12,48 @@ namespace Skybrud.Essentials.AspNetCore {
     /// </summary>
     public static class StringValuesExtensions {
 
+        #region ToString...
+
+        /// <summary>
+        /// Parses the specified array of string <paramref name="values"/> into a <see cref="string"/> array.
+        /// </summary>
+        /// <param name="values">The string values.</param>
+        /// <returns>A array of <see cref="string"/>.</returns>
+        public static string[] ToStringArray(this StringValues? values) {
+            return values?.SelectMany(StringUtils.ParseStringArray).ToArray() ?? Array.Empty<string>();
+        }
+
+        /// <summary>
+        /// Parses the specified array of string <paramref name="values"/> into a <see cref="string"/> array.
+        /// </summary>
+        /// <param name="values">The string values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A array of <see cref="string"/>.</returns>
+        public static string[] ToStringArray(this StringValues? values, params char[] separators) {
+            return values?.SelectMany(x => StringUtils.ParseStringArray(x, separators)).ToArray() ?? Array.Empty<string>();
+        }
+
+        /// <summary>
+        /// Parses the specified array of string <paramref name="values"/> into a <see cref="string"/> list.
+        /// </summary>
+        /// <param name="values">The string values.</param>
+        /// <returns>A list of <see cref="string"/>.</returns>
+        public static List<string> ToStringList(this StringValues? values) {
+            return values?.SelectMany(StringUtils.ParseStringArray).ToList() ?? new List<string>();
+        }
+
+        /// <summary>
+        /// Parses the specified array of string <paramref name="values"/> into a <see cref="string"/> list.
+        /// </summary>
+        /// <param name="values">The string values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of <see cref="string"/>.</returns>
+        public static List<string> ToStringList(this StringValues? values, params char[] separators) {
+            return values?.SelectMany(x => StringUtils.ParseStringArray(x, separators)).ToList() ?? new List<string>();
+        }
+
+        #endregion
+
         /// <summary>
         /// Converts the specified <paramref name="values" /> to an <see cref="int" /> value.
         /// </summary>
