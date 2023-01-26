@@ -156,6 +156,19 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
+        /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
+        /// the value as an <see cref="int"/>. If a matching query string component isn't found, or the value could not
+        /// be converted to an integer, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <returns>The converted <see cref="int"/> value if a matching query string component is found and the
+        /// conversion is successful; otherwise <see langword="null"/>.</returns>
+        public static int? GetInt32OrNull(this IQueryCollection? query, string key) {
+            return query?[key].ToInt32OrNull();
+        }
+
+        /// <summary>
         /// Attempts to get the <see cref="int"/> value of the string component with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="query">The query string.</param>
@@ -232,6 +245,19 @@ namespace Skybrud.Essentials.AspNetCore {
         /// conversion is successful; otherwise <paramref name="fallback"/>.</returns>
         public static long GetInt64(this IQueryCollection? query, string key, long fallback) {
             return query == null ? fallback : query[key].ToInt64(fallback);
+        }
+
+        /// <summary>
+        /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
+        /// the value as a <see cref="long"/>. If a matching query string component isn't found, or the value could not
+        /// be converted to an integer, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <returns>The converted <see cref="long"/> value if a matching query string component is found and the
+        /// conversion is successful; otherwise <see langword="null"/>.</returns>
+        public static long? GetInt64OrNull(this IQueryCollection? query, string key) {
+            return query?[key].ToInt64OrNull();
         }
 
         /// <summary>
@@ -314,6 +340,19 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
+        /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
+        /// the value as a <see cref="float"/>. If a matching query string component isn't found, or the value could not
+        /// be converted to an integer, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <returns>The converted <see cref="float"/> value if a matching query string component is found and the
+        /// conversion is successful; otherwise <see langword="null"/>.</returns>
+        public static float? GetFloatOrNull(this IQueryCollection? query, string key) {
+            return query?[key].ToFloatOrNull();
+        }
+
+        /// <summary>
         /// Attempts to get the <see cref="float"/> value of the string component with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="query">The query string.</param>
@@ -393,6 +432,19 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
+        /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
+        /// the value as a <see cref="double"/>. If a matching query string component isn't found, or the value could not
+        /// be converted to an integer, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <returns>The converted <see cref="double"/> value if a matching query string component is found and the
+        /// conversion is successful; otherwise <see langword="null"/>.</returns>
+        public static double? GetDoubleOrNull(this IQueryCollection? query, string key) {
+            return query?[key].ToDoubleOrNull();
+        }
+
+        /// <summary>
         /// Attempts to get the <see cref="double"/> value of the string component with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="query">The query string.</param>
@@ -469,6 +521,19 @@ namespace Skybrud.Essentials.AspNetCore {
         /// conversion is successful; otherwise <paramref name="fallback"/>.</returns>
         public static bool GetBoolean(this IQueryCollection? query, string key, bool fallback) {
             return query == null ? fallback : query[key].ToBoolean(fallback);
+        }
+
+        /// <summary>
+        /// Gets the value of the first query string component with the specified <paramref name="key"/>, and returns
+        /// the value as a <see cref="bool"/>. If a matching query string component isn't found, or the value could not
+        /// be converted to an integer, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <returns>The converted <see cref="bool"/> value if a matching query string component is found and the
+        /// conversion is successful; otherwise <see langword="null"/>.</returns>
+        public static bool? GetBooleanOrNull(this IQueryCollection? query, string key) {
+            return query?[key].ToBooleanOrNull();
         }
 
         /// <summary>

@@ -84,6 +84,17 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="values" /> to an <see cref="int" /> value. If the conversion fails,
+        /// <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static int? ToInt32OrNull(this StringValues values) {
+            string? input = values.FirstOrDefault();
+            return input.TryParseInt32(out int? result) ? result : null;
+        }
+
+        /// <summary>
         /// Parses the specified array of string <paramref name="values"/> into an <see cref="int"/> array.
         /// </summary>
         /// <param name="values">The string values.</param>
@@ -125,6 +136,17 @@ namespace Skybrud.Essentials.AspNetCore {
         public static long ToInt64(this StringValues values, long fallback) {
             string? input = values.FirstOrDefault();
             return input?.ToInt64(fallback) ?? fallback;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="long" /> value. If the conversion fails,
+        /// <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static long? ToInt64OrNull(this StringValues values) {
+            string? input = values.FirstOrDefault();
+            return input.TryParseInt64(out long? result) ? result : null;
         }
 
         /// <summary>
@@ -172,6 +194,17 @@ namespace Skybrud.Essentials.AspNetCore {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="float" /> value. If the conversion fails,
+        /// <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static float? ToFloatOrNull(this StringValues values) {
+            string? input = values.FirstOrDefault();
+            return input.TryParseFloat(out float? result) ? result : null;
+        }
+
+        /// <summary>
         /// Parses the specified array of string <paramref name="values"/> into a <see cref="float"/> array.
         /// </summary>
         /// <param name="values">The string values.</param>
@@ -213,6 +246,17 @@ namespace Skybrud.Essentials.AspNetCore {
         public static double ToDouble(this StringValues values, double fallback) {
             string? input = values.FirstOrDefault();
             return input?.ToDouble(fallback) ?? fallback;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="double" /> value. If the conversion fails,
+        /// <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static double? ToDoubleOrNull(this StringValues values) {
+            string? input = values.FirstOrDefault();
+            return input.TryParseDouble(out double? result) ? result : null;
         }
 
         /// <summary>
@@ -258,6 +302,17 @@ namespace Skybrud.Essentials.AspNetCore {
         public static bool ToBoolean(this StringValues values, bool fallback) {
             string? str = values.FirstOrDefault();
             return str?.ToBoolean(fallback) ?? fallback;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="values" /> to a <see cref="bool" /> value. If the conversion fails,
+        /// <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="values">The values to be converted.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static bool? ToBooleanOrNull(this StringValues values) {
+            string? input = values.FirstOrDefault();
+            return input.TryParseBoolean(out bool? result) ? result : null;
         }
 
         #endregion
