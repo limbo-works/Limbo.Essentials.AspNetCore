@@ -114,9 +114,9 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetString(this IQueryCollection query, string key, [NotNullWhen(true)] out string? result) {
 
-            if (query.TryGetValue(key, out StringValues value)) {
-                result = value;
-                return result is not null;
+            if (query.TryGetValue(key, out StringValues value) && value.FirstOrDefault() is { } str && !string.IsNullOrWhiteSpace(str)) {
+                result = str;
+                return true;
             }
 
             result = null;
