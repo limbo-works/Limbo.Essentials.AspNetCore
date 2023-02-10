@@ -655,7 +655,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <returns>The converted <typeparamref name="TEnum"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise, the default value of <typeparamref name="TEnum"/>.</returns>
-        public static TEnum ToEnum<TEnum>(this IQueryCollection? query, string key) where TEnum : struct, Enum {
+        public static TEnum GetEnum<TEnum>(this IQueryCollection? query, string key) where TEnum : struct, Enum {
             return (query?[key]).ToEnum<TEnum>();
         }
 
@@ -667,7 +667,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="fallback">The fallback value in case a value isn't found or cant be converted.</param>
         /// <returns>The converted <typeparamref name="TEnum"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise, <paramref name="fallback"/>.</returns>
-        public static TEnum ToEnum<TEnum>(this IQueryCollection? query, string key, TEnum fallback) where TEnum : struct, Enum {
+        public static TEnum GetEnum<TEnum>(this IQueryCollection? query, string key, TEnum fallback) where TEnum : struct, Enum {
             return (query?[key]).ToEnum(fallback);
         }
 
@@ -678,7 +678,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <returns>The converted <typeparamref name="TEnum"/> value if a matching query string component is found and the
         /// conversion is successful; otherwise, <see langword="null"/>.</returns>
-        public static TEnum? ToEnumOrNull<TEnum>(this IQueryCollection? query, string key) where TEnum : struct, Enum {
+        public static TEnum? GetEnumOrNull<TEnum>(this IQueryCollection? query, string key) where TEnum : struct, Enum {
             return (query?[key]).ToEnumOrNull<TEnum>();
         }
 
