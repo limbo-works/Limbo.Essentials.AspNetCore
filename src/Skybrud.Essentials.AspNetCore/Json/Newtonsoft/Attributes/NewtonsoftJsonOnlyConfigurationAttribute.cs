@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Skybrud.Essentials.AspNetCore.Json.Newtonsoft.Filters;
+using Skybrud.Essentials.Strings;
 
 #pragma warning disable CS1591
 
@@ -12,8 +14,19 @@ namespace Skybrud.Essentials.AspNetCore.Json.Newtonsoft.Attributes {
     [AttributeUsage(AttributeTargets.Class)]
     public class NewtonsoftJsonOnlyConfigurationAttribute : TypeFilterAttribute {
 
-        public NewtonsoftJsonOnlyConfigurationAttribute() : base(typeof(NewtonsoftJsonOnlyConfigurationFilter)) {
+        public TextCasing Casing { get; }
+
+        public Formatting Formatting { get; }
+
+        public NewtonsoftJsonOnlyConfigurationAttribute() : this(TextCasing.CamelCase, Formatting.None) { }
+
+        public NewtonsoftJsonOnlyConfigurationAttribute(TextCasing casing) : this(casing, Formatting.None) { }
+
+        public NewtonsoftJsonOnlyConfigurationAttribute(TextCasing casing, Formatting formatting) : base(typeof(NewtonsoftJsonOnlyConfigurationFilter)) {
+            Casing = casing;
+            Formatting = formatting;
             Order = 1;
+            Arguments = new object[] { this };
         }
 
     }
