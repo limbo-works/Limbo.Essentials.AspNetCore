@@ -112,9 +112,9 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the string value if successful; otherwise, <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetString(this IQueryCollection query, string key, [NotNullWhen(true)] out string? result) {
+        public static bool TryGetString(this IQueryCollection? query, string key, [NotNullWhen(true)] out string? result) {
 
-            if (query.TryGetValue(key, out StringValues value) && value.FirstOrDefault() is { } str && !string.IsNullOrWhiteSpace(str)) {
+            if (query is not null && query.TryGetValue(key, out StringValues value) && value.FirstOrDefault() is { } str && !string.IsNullOrWhiteSpace(str)) {
                 result = str;
                 return true;
             }
@@ -175,7 +175,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="int"/> value if successful; otherwise, <c>0</c>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetInt32(this IQueryCollection query, string key, out int result) {
+        public static bool TryGetInt32(this IQueryCollection? query, string key, out int result) {
             return StringUtils.TryParseInt32(GetString(query, key), out result);
         }
 
@@ -186,7 +186,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="int"/> value if successful; otherwise, <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetInt32(this IQueryCollection query, string key, [NotNullWhen(true)] out int? result) {
+        public static bool TryGetInt32(this IQueryCollection? query, string key, [NotNullWhen(true)] out int? result) {
             return StringUtils.TryParseInt32(GetString(query, key), out result);
         }
 
@@ -267,7 +267,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="long"/> value if successful; otherwise, <c>0</c>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetInt64(this IQueryCollection query, string key, out long result) {
+        public static bool TryGetInt64(this IQueryCollection? query, string key, out long result) {
             return StringUtils.TryParseInt64(GetString(query, key), out result);
         }
 
@@ -278,7 +278,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="long"/> value if successful; otherwise, <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetInt64(this IQueryCollection query, string key, [NotNullWhen(true)] out long? result) {
+        public static bool TryGetInt64(this IQueryCollection? query, string key, [NotNullWhen(true)] out long? result) {
             return StringUtils.TryParseInt64(GetString(query, key), out result);
         }
 
@@ -359,7 +359,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="float"/> value if successful; otherwise, <c>0</c>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetFloat(this IQueryCollection query, string key, out float result) {
+        public static bool TryGetFloat(this IQueryCollection? query, string key, out float result) {
             return StringUtils.TryParseFloat(GetString(query, key), out result);
         }
 
@@ -370,7 +370,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="float"/> value if successful; otherwise, <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetFloat(this IQueryCollection query, string key, [NotNullWhen(true)] out float? result) {
+        public static bool TryGetFloat(this IQueryCollection? query, string key, [NotNullWhen(true)] out float? result) {
             return StringUtils.TryParseFloat(GetString(query, key), out result);
         }
 
@@ -451,7 +451,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="double"/> value if successful; otherwise, <c>0</c>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetDouble(this IQueryCollection query, string key, out double result) {
+        public static bool TryGetDouble(this IQueryCollection? query, string key, out double result) {
             return StringUtils.TryParseDouble(GetString(query, key), out result);
         }
 
@@ -462,7 +462,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="double"/> value if successful; otherwise, <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetDouble(this IQueryCollection query, string key, [NotNullWhen(true)] out double? result) {
+        public static bool TryGetDouble(this IQueryCollection? query, string key, [NotNullWhen(true)] out double? result) {
             return StringUtils.TryParseDouble(GetString(query, key), out result);
         }
 
@@ -543,7 +543,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="bool"/> value if successful; otherwise, <see langword="false"/>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetBoolean(this IQueryCollection query, string key, out bool result) {
+        public static bool TryGetBoolean(this IQueryCollection? query, string key, out bool result) {
             return StringUtils.TryParseBoolean(GetString(query, key), out result);
         }
 
@@ -554,7 +554,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="bool"/> value if successful; otherwise, <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetBoolean(this IQueryCollection query, string key, [NotNullWhen(true)] out bool? result) {
+        public static bool TryGetBoolean(this IQueryCollection? query, string key, [NotNullWhen(true)] out bool? result) {
             return StringUtils.TryParseBoolean(GetString(query, key), out result);
         }
 
@@ -629,7 +629,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="Guid"/> value if successful; otherwise, <see cref="Guid.Empty"/>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetGuid(this IQueryCollection query, string key, out Guid result) {
+        public static bool TryGetGuid(this IQueryCollection? query, string key, out Guid result) {
             return StringUtils.TryParseGuid(GetString(query, key), out result);
         }
 
@@ -640,7 +640,7 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <param name="key">The key of the query string component.</param>
         /// <param name="result">When this method returns, holds the <see cref="Guid"/> value if successful; otherwise, <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetGuid(this IQueryCollection query, string key, [NotNullWhen(true)] out Guid? result) {
+        public static bool TryGetGuid(this IQueryCollection? query, string key, [NotNullWhen(true)] out Guid? result) {
             return StringUtils.TryParseGuid(GetString(query, key), out result);
         }
 
