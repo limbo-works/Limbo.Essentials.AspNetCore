@@ -8,6 +8,7 @@ using Skybrud.Essentials.Strings.Extensions;
 using System.Diagnostics.CodeAnalysis;
 using Skybrud.Essentials.Strings;
 using System.Collections.Generic;
+using Skybrud.Essentials.Enums;
 
 // ReSharper disable ForeachCanBePartlyConvertedToQueryUsingAnotherGetEnumerator
 
@@ -742,6 +743,32 @@ namespace Skybrud.Essentials.AspNetCore {
         /// <returns>A list of <typeparamref name="TEnum"/>.</returns>
         public static List<TEnum> GetEnumList<TEnum>(this IQueryCollection? query, string key, params char[] separators) where TEnum : struct, Enum {
             return (query?[key]).ToEnumList<TEnum>(separators);
+        }
+
+        /// <summary>
+        /// Attempts to get the enum value of type <typeparamref name="TEnum"/> from the first query string component with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, contains the parsed <typeparamref name="TEnum"/> value if successful; otherwise, <see langword="null"/>. This parameter is passed uninitialized.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetEnum<TEnum>(this IQueryCollection? query, string key, out TEnum result) where TEnum : struct, Enum {
+            result = default;
+            return TryGetString(query, key, out string? value) && EnumUtils.TryParseEnum(value, out result);
+        }
+
+        /// <summary>
+        /// Attempts to get the enum value of type <typeparamref name="TEnum"/> from the header with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="query">The query string.</param>
+        /// <param name="key">The key of the query string component.</param>
+        /// <param name="result">When this method returns, contains the parsed <typeparamref name="TEnum"/> value if successful; otherwise, the default value of <typeparamref name="TEnum"/>. This parameter is passed uninitialized.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetEnum<TEnum>(this IQueryCollection? query, string key, out TEnum? result) where TEnum : struct, Enum {
+            result = null;
+            return TryGetString(query, key, out string? value) && EnumUtils.TryParseEnum(value, out result);
         }
 
         #endregion
