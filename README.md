@@ -22,13 +22,13 @@
 To install the package via [**NuGet**](https://www.nuget.org/packages/Skybrud.Essentials.AspNetCore), you can use either .NET CLI:
 
 ```
-dotnet add package Skybrud.Essentials.AspNetCore --version 1.0.0-alpha014
+dotnet add package Skybrud.Essentials.AspNetCore --version 1.0.0-alpha015
 ```
 
 or the older Nuget package manager:
 
 ```
-Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0-alpha014
+Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0-alpha015
 ```
 
 <br /><br />
