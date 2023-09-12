@@ -15,7 +15,8 @@ namespace Limbo.Essentials.AspNetCore.Json.Newtonsoft {
         public HttpStatusCode Code { get; set; }
 
         /// <summary>
-        /// Gets or sets the error message. If the error message is <c>NULL</c>, the property will not be a part of the JSON response.
+        /// Gets or sets the error message. If the error message is <see langword="null"/>, the property will not be a
+        /// part of the JSON response.
         /// </summary>
         [JsonProperty(PropertyName = "error", NullValueHandling = NullValueHandling.Ignore)]
         public string? Error { get; set; }

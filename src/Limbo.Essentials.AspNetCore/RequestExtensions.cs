@@ -25,7 +25,7 @@ namespace Limbo.Essentials.AspNetCore {
         }
 
         /// <summary>
-        /// Returns the value of the <c>Accept</c> HTTP header, or <c>null</c> if the header is not present.
+        /// Returns the value of the <c>Accept</c> HTTP header, or <see langword="null"/> if the header is not present.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
@@ -34,7 +34,7 @@ namespace Limbo.Essentials.AspNetCore {
         }
 
         /// <summary>
-        /// Returns the value of the <c>Accept-Encoding</c> HTTP header, or <c>null</c> if the header is not present.
+        /// Returns the value of the <c>Accept-Encoding</c> HTTP header, or <see langword="null"/> if the header is not present.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
@@ -43,7 +43,7 @@ namespace Limbo.Essentials.AspNetCore {
         }
 
         /// <summary>
-        /// Returns the value of the <c>Accept-Language</c> HTTP header, or <c>null</c> if the header is not present.
+        /// Returns the value of the <c>Accept-Language</c> HTTP header, or <see langword="null"/> if the header is not present.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
@@ -61,7 +61,7 @@ namespace Limbo.Essentials.AspNetCore {
         }
 
         /// <summary>
-        /// Returns the value of the <c>Referer</c> HTTP header, or <c>null</c> if the header is not present.
+        /// Returns the value of the <c>Referer</c> HTTP header, or <see langword="null"/> if the header is not present.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The header value.</returns>
@@ -79,10 +79,10 @@ namespace Limbo.Essentials.AspNetCore {
         }
 
         /// <summary>
-        /// Returns the value of the <c>X-Forwarded-For</c> header, or <c>null</c> if the header is not present.
+        /// Returns the value of the <c>X-Forwarded-For</c> header, or <see langword="null"/> if the header is not present.
         /// </summary>
         /// <param name="request">The request.</param>
-        /// <returns>The value of the header, or <c>null</c> if not present.</returns>
+        /// <returns>The value of the header, or <see langword="null"/> if not present.</returns>
         public static string? GetForwardedFor(this HttpRequest? request) {
             return request?.Headers["X-Forwarded-For"].FirstOrDefault();
         }

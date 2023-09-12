@@ -23,11 +23,11 @@ namespace Limbo.Essentials.AspNetCore {
 
         /// <summary>
         /// Returns the value of the first query string component with the specified <paramref name="key"/>, or
-        /// <c>null</c> if not found.
+        /// <see langword="null"/> if not found.
         /// </summary>
         /// <param name="query">The query string.</param>
         /// <param name="key">The key of the query string component.</param>
-        /// <returns>The value of the first query string component matching <paramref name="key"/>; otherwise <c>null</c>.</returns>
+        /// <returns>The value of the first query string component matching <paramref name="key"/>; otherwise <see langword="null"/>.</returns>
         public static string? GetString(this IQueryCollection? query, string key) {
             return query?[key].FirstOrDefault();
         }
