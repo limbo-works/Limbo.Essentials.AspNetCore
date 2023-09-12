@@ -1,4 +1,7 @@
-﻿namespace Limbo.Essentials.AspNetCore.Json {
+﻿using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+
+namespace Limbo.Essentials.AspNetCore.Json {
 
     /// <summary>
     /// Class with pagination information.
@@ -8,16 +11,22 @@
         /// <summary>
         /// Gets the total amount of items.
         /// </summary>
+        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public long Total { get; }
 
         /// <summary>
         /// Gets the limit.
         /// </summary>
+        [JsonProperty("limit")]
+        [JsonPropertyName("limit")]
         public long Limit { get; }
 
         /// <summary>
         /// Gets the offset.
         /// </summary>
+        [JsonProperty("offset")]
+        [JsonPropertyName("offset")]
         public long Offset { get; }
 
         /// <summary>

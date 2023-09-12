@@ -13,6 +13,7 @@ public class LimboJsonMetaData {
     /// Gets or sets the status code.
     /// </summary>
     [JsonProperty(PropertyName = "code")]
+    [JsonPropertyName("code")]
     public HttpStatusCode Code { get; set; } = HttpStatusCode.OK;
 
     /// <summary>
@@ -20,6 +21,7 @@ public class LimboJsonMetaData {
     /// response.
     /// </summary>
     [JsonProperty(PropertyName = "error", NullValueHandling = NullValueHandling.Ignore)]
+    [JsonPropertyName("error")]
     [System.Text.Json.Serialization.JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Error { get; set; }
 
