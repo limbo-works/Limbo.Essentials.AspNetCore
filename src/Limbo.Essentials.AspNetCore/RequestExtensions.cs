@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 
-namespace Skybrud.Essentials.AspNetCore {
+namespace Limbo.Essentials.AspNetCore {
 
     /// <summary>
     /// Various extension methods for working with <see cref="HttpRequest"/>.

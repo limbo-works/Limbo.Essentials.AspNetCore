@@ -1,4 +1,5 @@
 ﻿using System.Buffers;
+using Limbo.Essentials.AspNetCore.Json.Newtonsoft.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -6,12 +7,11 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using Skybrud.Essentials.AspNetCore.Json.Newtonsoft.Attributes;
 using Skybrud.Essentials.Json.Newtonsoft.Serialization;
 
 #pragma warning disable CS1591
 
-namespace Skybrud.Essentials.AspNetCore.Json.Newtonsoft.Filters {
+namespace Limbo.Essentials.AspNetCore.Json.Newtonsoft.Filters {
 
     public class NewtonsoftJsonOnlyConfigurationFilter : IResultFilter {
 

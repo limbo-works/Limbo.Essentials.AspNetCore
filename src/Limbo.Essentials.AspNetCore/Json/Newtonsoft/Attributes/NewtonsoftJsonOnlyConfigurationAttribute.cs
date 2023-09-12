@@ -1,12 +1,12 @@
 ﻿using System;
+using Limbo.Essentials.AspNetCore.Json.Newtonsoft.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Skybrud.Essentials.AspNetCore.Json.Newtonsoft.Filters;
 using Skybrud.Essentials.Strings;
 
 #pragma warning disable CS1591
 
-namespace Skybrud.Essentials.AspNetCore.Json.Newtonsoft.Attributes {
+namespace Limbo.Essentials.AspNetCore.Json.Newtonsoft.Attributes {
 
     /// <summary>
     /// When added to an API controller, the output will be serialized to JSON using <strong>Newtonsoft.Json</strong>.

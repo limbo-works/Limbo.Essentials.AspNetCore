@@ -1,18 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Primitives;
 using System.Net;
 using System.Text;
-using Skybrud.Essentials.Strings.Extensions;
-using System.Diagnostics.CodeAnalysis;
-using Skybrud.Essentials.Strings;
-using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Primitives;
 using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
+using Skybrud.Essentials.Strings.Extensions;
 
 // ReSharper disable ForeachCanBePartlyConvertedToQueryUsingAnotherGetEnumerator
 
-namespace Skybrud.Essentials.AspNetCore {
+namespace Limbo.Essentials.AspNetCore {
 
     /// <summary>
     /// Various extension methods for working with ASP.NET Core query strings.

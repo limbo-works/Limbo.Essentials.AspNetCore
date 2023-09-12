@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Skybrud.Essentials.AspNetCore\Skybrud.Essentials.AspNetCore.csproj" />
+    <ProjectReference Include="..\Limbo.Essentials.AspNetCore\Limbo.Essentials.AspNetCore.csproj" />
   </ItemGroup>
 
 </Project>

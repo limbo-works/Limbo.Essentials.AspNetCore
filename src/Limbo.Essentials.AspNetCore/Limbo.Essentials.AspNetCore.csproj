@@ -11,22 +11,22 @@
     <VersionPrefix>1.0.0</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
-    <Product>Skybrud.Essentials</Product>
+    <Product>Limbo.Essentials</Product>
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
-    <Description>Skybrud.Essentials addon for working with ASP.NET Core.</Description>
+    <Description>.NET library with common purpose functionality for working with ASP.NET Core.</Description>
   </PropertyGroup>
 
   <!-- Information for the NuGet package -->
   <PropertyGroup>
-    <PackageId>Skybrud.Essentials.AspNetCore</PackageId>
+    <PackageId>Limbo.Essentials.AspNetCore</PackageId>
     <PackageTags>Skybrud, Limbo, Essentials, AspNet, AspNetCore</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://packages.skybrud.dk/skybrud.essentials.aspnetcore/</PackageProjectUrl>
+    <PackageProjectUrl>https://packages.limbo.works/limbo.essentials.aspnetcore/</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
     <PackageReadmeFile>NUGET.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/skybrud/Skybrud.Essentials.AspNetCore</RepositoryUrl>
+    <RepositoryUrl>https://github.com/limbo-works/Limbo.Essentials.AspNetCore</RepositoryUrl>
   </PropertyGroup>
 
   <!-- Include NuGet dependencies -->

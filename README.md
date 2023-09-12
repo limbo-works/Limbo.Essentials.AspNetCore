@@ -1,6 +1,8 @@
-# Skybrud.Essentials.AspNetCore [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Skybrud.Essentials.AspNetCore.svg)](https://www.nuget.org/packages/Skybrud.Essentials.AspNetCore) [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Essentials.AspNetCore.svg)](https://www.nuget.org/packages/Skybrud.Essentials.AspNetCore)
+# Limbo.Essentials.AspNetCore
 
-**Skybrud.Essentials.AspNetCore** is an add-on that builds on top of our [Skybrud.Essentials](https://github.com/skybrud/Skybrud.Essentials) package, and it provides various logic that makes it easier to work with different parts of ASP.NET Core - eg. parsing query strings and reading request headers..
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Essentials.AspNetCore.svg)](https://www.nuget.org/packages/Limbo.Essentials.AspNetCore) [![NuGet](https://img.shields.io/nuget/dt/Limbo.Essentials.AspNetCore.svg)](https://www.nuget.org/packages/Limbo.Essentials.AspNetCore)
+
+**Limbo.Essentials.AspNetCore** is an add-on that builds on top of our [Skybrud.Essentials](https://github.com/skybrud/Skybrud.Essentials) package, and it provides various logic that makes it easier to work with different parts of ASP.NET Core - eg. parsing query strings and reading request headers..
 
 <table>
   <tr>
@@ -19,16 +21,16 @@
 
 ### NuGet
 
-To install the package via [**NuGet**](https://www.nuget.org/packages/Skybrud.Essentials.AspNetCore), you can use either .NET CLI:
+To install the package via [**NuGet**](https://www.nuget.org/packages/Limbo.Essentials.AspNetCore), you can use either .NET CLI:
 
 ```
-dotnet add package Skybrud.Essentials.AspNetCore --version 1.0.0
+dotnet add package Limbo.Essentials.AspNetCore --version 1.0.0
 ```
 
 or the older Nuget package manager:
 
 ```
-Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0
+Install-Package Limbo.Essentials.AspNetCore -Version 1.0.0
 ```
 
 <br /><br />
@@ -39,7 +41,7 @@ Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0
 
 ```cshtml
 @using Microsoft.AspNetCore.Http
-@using Skybrud.Essentials.AspNetCore
+@using Limbo.Essentials.AspNetCore
 
 @inject IHttpContextAccessor HttpContextAccessor
 
@@ -78,7 +80,7 @@ Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0
 ```cshtml
 @using Microsoft.AspNetCore.Http
 @using Microsoft.Extensions.Primitives
-@using Skybrud.Essentials.AspNetCore
+@using Limbo.Essentials.AspNetCore
 @{
 
     IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
@@ -114,7 +116,7 @@ Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0
 ```cshtml
 @using Microsoft.AspNetCore.Http
 @using Microsoft.Extensions.Primitives
-@using Skybrud.Essentials.AspNetCore
+@using Limbo.Essentials.AspNetCore
 @{
 
     IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
@@ -158,7 +160,7 @@ Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0
 ```cshtml
 @using Microsoft.AspNetCore.Http
 @using Microsoft.Extensions.Primitives
-@using Skybrud.Essentials.AspNetCore
+@using Limbo.Essentials.AspNetCore
 @{
 
     IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
@@ -202,7 +204,7 @@ Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0
 ```cshtml
 @using Microsoft.AspNetCore.Http
 @using Microsoft.Extensions.Primitives
-@using Skybrud.Essentials.AspNetCore
+@using Limbo.Essentials.AspNetCore
 @{
 
     IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
@@ -246,7 +248,7 @@ Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0
 ```cshtml
 @using Microsoft.AspNetCore.Http
 @using Microsoft.Extensions.Primitives
-@using Skybrud.Essentials.AspNetCore
+@using Limbo.Essentials.AspNetCore
 @{
 
     IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
@@ -290,7 +292,7 @@ Install-Package Skybrud.Essentials.AspNetCore -Version 1.0.0
 ```cshtml
 @using Microsoft.AspNetCore.Http
 @using Microsoft.Extensions.Primitives
-@using Skybrud.Essentials.AspNetCore
+@using Limbo.Essentials.AspNetCore
 @{
 
     IQueryCollection query = new QueryCollection(new Dictionary<string, StringValues> {
@@ -338,7 +340,7 @@ By default, ASP.NET Core uses the logic within the `System.Text.Json` namespace 
 
 This package let's you set up all your API controllers to use `Newtonsoft.Json` for serializing JSON. This is a global setting, so be aware that this may affect parts of your application that it shouldn't.
 
-You don't need `Skybrud.Essentials.AspNetCore` when using this approach.
+You don't need `Limbo.Essentials.AspNetCore` when using this approach.
 
 
 #### Use the `NewtonsoftJsonResult` class

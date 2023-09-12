@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Extensions.Primitives;
-using Skybrud.Essentials.Strings.Extensions;
 using System.Linq;
+using Microsoft.Extensions.Primitives;
 using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
+using Skybrud.Essentials.Strings.Extensions;
 
 // ReSharper disable ForeachCanBePartlyConvertedToQueryUsingAnotherGetEnumerator
 
-namespace Skybrud.Essentials.AspNetCore {
+namespace Limbo.Essentials.AspNetCore {
 
     /// <summary>
     /// Various extension methods for working with the <see cref="StringValues"/> class.

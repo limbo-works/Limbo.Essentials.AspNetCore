@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Primitives;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Skybrud.Essentials.Strings.Extensions;
-using Skybrud.Essentials.Strings;
-using System;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Primitives;
 using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
+using Skybrud.Essentials.Strings.Extensions;
 
-namespace Skybrud.Essentials.AspNetCore {
+namespace Limbo.Essentials.AspNetCore {
 
     /// <summary>
     /// Various extension methods for working with ASP.NET Core header collections.

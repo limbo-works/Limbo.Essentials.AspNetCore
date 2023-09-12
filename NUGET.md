@@ -1,6 +1,6 @@
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Skybrud.Essentials.AspNetCore.svg)](https://www.nuget.org/packages/Skybrud.Essentials.AspNetCore) [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Essentials.AspNetCore.svg)](https://www.nuget.org/packages/Skybrud.Essentials.AspNetCore)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/limbo-works/Limbo.Essentials/blob/v1/main/LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Essentials.AspNetCore.svg)](https://www.nuget.org/packages/Limbo.Essentials.AspNetCore) [![NuGet](https://img.shields.io/nuget/dt/Limbo.Essentials.AspNetCore.svg)](https://www.nuget.org/packages/Limbo.Essentials.AspNetCore)
 
-**Skybrud.Essentials.AspNetCore** is an add-on that builds on top of our [Skybrud.Essentials](https://github.com/skybrud/Skybrud.Essentials) package, and it provides various logic that makes it easier to work with different parts of ASP.NET Core - eg. parsing query strings and reading request headers.
+Limbo.Essentials.AspNetCore** is an add-on that builds on top of our [Skybrud.Essentials](https://github.com/skybrud/Limbo.Essentials) package, and it provides various logic that makes it easier to work with different parts of ASP.NET Core - eg. parsing query strings and reading request headers.
 
 ### Changelog
 
@@ -12,7 +12,7 @@ For examples on how to use the package, see our [**documentation**][Documentatio
 
 
 
-[Documentation]: https://packages.limbo.works/9a556a40
-[NuGetPackage]: https://github.com/skybrud/Skybrud.Essentials.AspNetCore
-[GitHubRelease]: https://github.com/skybrud/Skybrud.Essentials.AspNetCore/releases/latest
-[Releases]: https://github.com/skybrud/Skybrud.Essentials.AspNetCore/releases
+[Documentation]: https://packages.limbo.works/0d110ddc
+[NuGetPackage]: https://github.com/skybrud/Limbo.Essentials.AspNetCore
+[GitHubRelease]: https://github.com/limbo-works/Limbo.Essentials.AspNetCore/releases/latest
+[Releases]: https://github.com/limbo-works/Limbo.Essentials.AspNetCore/releases
