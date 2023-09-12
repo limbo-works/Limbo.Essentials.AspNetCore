@@ -802,6 +802,15 @@ namespace Limbo.Essentials.AspNetCore {
 
         }
 
+        /// <summary>
+        /// Creates and return a new <see cref="IQueryCollection"/> based on the specified <paramref name="dictionary"/>.
+        /// </summary>
+        /// <param name="dictionary">The dictionary representing the query string.</param>
+        /// <returns>An instance of <see cref="IQueryCollection"/>.</returns>
+        public static IQueryCollection ToQueryCollection(this Dictionary<string, StringValues> dictionary) {
+            return new QueryCollection(dictionary);
+        }
+
     }
 
 }
