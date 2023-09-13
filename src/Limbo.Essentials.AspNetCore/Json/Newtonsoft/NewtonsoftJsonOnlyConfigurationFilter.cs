@@ -15,14 +15,13 @@ namespace Limbo.Essentials.AspNetCore.Json.Newtonsoft {
     public class NewtonsoftJsonOnlyConfigurationFilter : IResultFilter {
 
         private readonly ArrayPool<char> _arrayPool;
+        private readonly NewtonsoftJsonOnlyConfigurationAttribute _attribute;
         private readonly MvcOptions _options;
-
-        public NewtonsoftJsonOnlyConfigurationAttribute Attribute { get; }
 
         public NewtonsoftJsonOnlyConfigurationFilter(ArrayPool<char> arrayPool, IOptionsSnapshot<MvcOptions> options, NewtonsoftJsonOnlyConfigurationAttribute attribute) {
             _arrayPool = arrayPool;
+            _attribute = attribute;
             _options = options.Value;
-            Attribute = attribute;
         }
 
         public void OnResultExecuted(ResultExecutedContext context) { }
@@ -32,11 +31,11 @@ namespace Limbo.Essentials.AspNetCore.Json.Newtonsoft {
             if (context.Result is not ObjectResult objectResult) return;
 
             JsonSerializerSettings serializerSettings = new() {
-                ContractResolver = new DefaultContractResolver() {
-                    NamingStrategy = new TextCasingNamingStrategy(Attribute.Casing)
+                ContractResolver = new DefaultContractResolver {
+                    NamingStrategy = new TextCasingNamingStrategy(_attribute.Casing)
                 },
                 Converters = { new VersionConverter() },
-                Formatting = Attribute.Formatting
+                Formatting = _attribute.Formatting
             };
 
             objectResult.Formatters.Clear();
